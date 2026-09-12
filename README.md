@@ -21,8 +21,8 @@ because this page is built out of that one.
 - **Visual language** is the membership page's, unchanged: near-black surfaces,
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
-  the membership page does not - the date row, the benefit list, the two-up
-  pricing - is drawn in that same language rather than in Scalev's.
+  the membership page does not - the benefit list, the two-up pricing - is
+  drawn in that same language rather than in Scalev's.
 
 The page is one self-contained file, `index.html`: no build step, no
 dependencies, no external CSS, JS, fonts or images. Fonts and every screenshot
@@ -45,28 +45,29 @@ Same server as the membership repo - see that README for the details.
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero - the webinar's own headline, with the membership page's testimonial
    deck beside it (six member screenshots, crossfading)
-3. **When, where, how many seats** - date, time, Zoom, kuota. Sits where the
-   membership page runs its brand marquee, so the facts land above the fold's
-   fold rather than as small print under the headline.
-4. *Lo pasti pernah ngerasa* - the reader's problem, a member's video, and the
-   two lines that answer it
-5. Proof - a moving wall of member screenshots, two columns against each other
-6. *Kenapa Pilih Crypto Teknikal Academy* - the logo sting and 4 value cards
-7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
-8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
-9. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
+3. **Testimoni member** - a member's video and a CTA under it. Nothing stands
+   between the hero and the film, so the page makes its promise once and asks
+   once before the proof wall starts.
+4. Proof - a moving wall of member screenshots, two columns against each other
+5. *Kenapa Pilih Crypto Teknikal Academy* - the logo sting and 4 value cards
+6. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
+7. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
+8. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
    sideways
-10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
-11. **Pricing** - the eleven-line benefit list once, then two tickets
-12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
+9. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
+10. **Pricing** - the eleven-line benefit list once, then two tickets
+11. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
-13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+12. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 Bold is where this page departs from the membership one. What the membership
 page carries and this one does not - the brand marquee, before/after, *cocok
 buat siapa*, the nine modules, three of the seven bonuses, the FAQ - is absent
 because the webinar page does not have those sections; the markup and the CSS
-for them are still in the membership repo if any are wanted back.
+for them are still in the membership repo if any are wanted back. The Scalev
+page's date row and its *Lo pasti pernah ngerasa* list are gone the other way
+round: they were built here and then dropped, so `git show be0e70e` is where
+their markup and CSS live now.
 
 ## The offer
 
@@ -78,6 +79,10 @@ for them are still in the membership repo if any are wanted back.
 | Solo | Rp79.000 |
 | Berdua | Rp99.000 (Rp49.500 each) |
 | Stated value | Rp9.298.000 |
+
+The first three are the webinar's own logistics, not copy: the page states
+neither the date, the platform nor the kuota any more (see [Notes](#notes)), so
+they live here and in the checkout's own page.
 
 The value adds up from the six materi (Rp5.000.000) and the four bonuses
 (Rp2.000.000 + Rp1.000.000 + Rp499.000 + Rp799.000). Change any one of those
@@ -107,7 +112,6 @@ What is new here, and only here:
 
 | what | where |
 |------|-------|
-| The date row | `.webband` / `.webrow` / `.webcell` |
 | The eleven-line benefit list | `.benefitbox` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
@@ -118,9 +122,9 @@ seventh materi means bringing its `<symbol>` back from the membership repo.
 
 ## Notes
 
-- **The date is the one thing that goes stale.** It appears twice: in the
-  `.webcell` under the hero and in the `<meta name="description">`. Both have to
-  move when the webinar does.
+- **The date is the one thing that goes stale.** The page itself no longer
+  states it - the only copy left is in the `<meta name="description">`, which
+  has to move when the webinar does.
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile that parks
   itself whenever one of the page's own buttons is on screen.
 - `prefers-reduced-motion` disables every animation; the proof wall stops being

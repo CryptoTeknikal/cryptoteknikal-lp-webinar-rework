@@ -233,14 +233,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    gap above it is the one a head leaves below itself, so it reads as this
    section's closing rather than the next one's opening. */
 .sectioncta{margin-top:clamp(30px,3.6vw,44px);text-align:center}
-/* the page speaking to the reader in its own voice rather than through another
-   card: centred, muted, and held to the same 760px measure wherever it lands -
-   under the pain list, and again under the before/after pair. */
-.say{text-align:center;color:var(--mut);font-size:clamp(1rem,1.4vw,1.1rem);max-width:760px;margin:30px auto 0;text-wrap:balance}
-.say + .say{margin-top:16px}
-/* in a band of its own the top margin would be air on top of air */
-.sayband .say:first-child{margin-top:0}
-.say b{font-weight:600}
 .vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
 .vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
   display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
@@ -288,30 +280,14 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .mktcell .mi svg{width:22px;height:22px}
 .mktcell b{display:block;font-size:1.05rem;font-weight:600;letter-spacing:-.01em}
 
-/* ===== LO PASTI PERNAH NGERASA (pain + testimonial video) =====
-   These are the reader's problems, but the panel still reads in the page's own
-   magenta - it is the reader being recognised, not warned, so it gets the same
-   tinted-card-with-a-glow treatment as the rest of the page. The video under it
-   is a facade: the poster and a play button until it is clicked, so the page
-   still loads without pulling YouTube's player in. */
-.painwrap{max-width:760px;margin:0 auto}
-.paincard{border-radius:22px;padding:28px 26px;border:1px solid rgba(255,0,255,.26);
-  background:linear-gradient(160deg,rgba(255,0,255,.09),var(--card) 52%);
-  box-shadow:var(--shadow-sm),0 0 46px rgba(255,0,255,.07)}
-.paincard h2{font-size:clamp(1.15rem,2.2vw,1.4rem);font-weight:700;letter-spacing:-.005em;margin-bottom:20px}
-.painlist{list-style:none;display:flex;flex-direction:column;gap:14px}
-.painlist li{display:flex;gap:12px;align-items:flex-start;font-size:.97rem;color:var(--ink2)}
-.painlist li:first-child{font-style:italic;color:var(--ink)}
-.painlist .d{flex:none;width:20px;height:20px;border-radius:50%;margin-top:3px;
-  background:rgba(255,0,255,.14);border:1.5px solid rgba(255,0,255,.5);
-  display:flex;align-items:center;justify-content:center}
-.painlist .d i{width:7px;height:7px;border-radius:50%;background:var(--brand2);display:block}
-
-/* Click-to-play video. The poster and the play button are all there is until
-   someone asks for the film: the <video> is preload="none", so the box costs a
-   34KB poster and nothing else. Once it is playing the button and the vignette
-   go, and the player's own controls take over. */
+/* ===== TESTIMONI MEMBER (video) =====
+   Click-to-play. The poster and the play button are all there is until someone
+   asks for the film: the <video> is preload="none", so the box costs a 34KB
+   poster and nothing else. Once it is playing the button and the vignette go,
+   and the player's own controls take over. */
 .vidwrap{max-width:760px;margin:clamp(30px,3.6vw,42px) auto 0}
+/* first thing in its band, the top margin would be air on top of air */
+.vidwrap:first-child{margin-top:0}
 .vidbox{position:relative;aspect-ratio:16/9;border-radius:20px;overflow:hidden;cursor:pointer;
   border:1px solid var(--line2);background:#000;
   box-shadow:var(--shadow),0 0 60px rgba(255,0,255,.07)}
@@ -760,19 +736,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .proofwall{height:auto;overflow:visible;-webkit-mask-image:none;mask-image:none}
   .proofwall figure[aria-hidden]{display:none}
 }
-/* ===== WEBINAR FACTS =====
-   When, how long, where, and how many seats - the four things a webinar page
-   owes the reader before it starts arguing anything. They get a row of their
-   own instead of a line of small print under the headline, and the band keeps
-   its top padding short so the row still reads as part of the hero's promise
-   rather than as the page's second section. */
-.webband{padding-top:clamp(8px,1.2vw,16px)}
-.webrow{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:940px;margin:0 auto}
-.webcell{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 16px;text-align:center;box-shadow:var(--shadow-sm)}
-.webcell .wi{width:42px;height:42px;margin:0 auto 12px;border-radius:12px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2)}
-.webcell .wi svg{width:21px;height:21px}
-.webcell .wk{display:block;font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--soft-mut);margin-bottom:6px}
-.webcell b{display:block;font-size:1.02rem;font-weight:600;letter-spacing:-.015em;line-height:1.3;color:var(--ink);text-wrap:balance}
 /* The hero's eyebrow. At phone widths .herocopy is display:contents, so the
    pill becomes a grid item of the hero grid and would be blockified to the
    column's full width - justify-self keeps it the size of its own text. */
@@ -798,7 +761,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
    to land on the same line. */
 .plan .btn{margin-top:auto}
 @media(max-width:820px){
-  .webrow{grid-template-columns:repeat(2,1fr)}
   .benefitbox ul{grid-template-columns:1fr}
   /* stacked, the second card's flag would sit on the first card's bottom edge,
      so the gap opens up to make room for it. */
@@ -901,55 +863,11 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </div>
 </section>
 
-<!-- ===== KAPAN, DI MANA, BERAPA KURSI =====
-     The four facts the reader came for, stated before the page argues
-     anything: they sit directly under the hero's promise, in the row the
-     brand strip occupies on the membership page. -->
-<section class="band seam webband">
+<!-- ===== TESTIMONI MEMBER =====
+     A member telling it, then the button: nothing between the hero and this
+     but the film, so the page argues once and asks once. -->
+<section class="band soft seam">
   <div class="wrap">
-    <div class="webrow reveal">
-      <div class="webcell">
-        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4.5" width="18" height="17" rx="2.5"/><path d="M8 2.5v4M16 2.5v4M3 10h18"/></svg></div>
-        <span class="wk">Tanggal</span>
-        <b>Selasa, 23 Desember 2025</b>
-      </div>
-      <div class="webcell">
-        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.4l3.4 2"/></svg></div>
-        <span class="wk">Jam</span>
-        <b>19.30 - 22.30 WIB</b>
-      </div>
-      <div class="webcell">
-        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2.5"/><path d="M16 11l6-4v10l-6-4z"/></svg></div>
-        <span class="wk">Tempat</span>
-        <b>Live via Zoom</b>
-      </div>
-      <div class="webcell">
-        <div class="wi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <span class="wk">Kuota</span>
-        <b>Terbatas 100 peserta</b>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== LO PASTI PERNAH NGERASA ===== -->
-<section class="band soft">
-  <div class="wrap">
-    <div class="painwrap reveal">
-      <div class="paincard">
-        <h2>Lo pasti pernah ngerasa:</h2>
-        <ul class="painlist">
-          <li><span class="d"><i></i></span>&ldquo;Kayaknya banyak banget orang yang udah bisa kaya dari crypto deh&hellip;&rdquo;</li>
-          <li><span class="d"><i></i></span>Tapi tiap kali lo mau coba, ujungnya bingung sendiri.</li>
-          <li><span class="d"><i></i></span>Nonton berbagai video, tapi masih belum paham.</li>
-          <li><span class="d"><i></i></span>Join grup lain yang populer, tapi masih belum yakin arah market mau kemana.</li>
-          <li><span class="d"><i></i></span>Udah coba entry trade, tapi karena pake feeling, jadinya nyangkut.</li>
-          <li><span class="d"><i></i></span>Coba ngikutin sinyal, tapi gak paham kenapa harus ambil sinyalnya.</li>
-        </ul>
-      </div>
-      <p class="say">Mungkin lo belum tahu <b class="hl">rahasia</b> yang bisa bantu lo untuk <b class="hl">naklukin market crypto.</b></p>
-      <p class="say">Padahal lo cuma butuh: <b class="hl">strategi yang jelas, runtut, masuk akal, dan bisa dipelajari dari 0.</b></p>
-    </div>
     <div class="vidwrap reveal">
       <div class="vidbox">
         <video preload="none" playsinline width="1280" height="720"
@@ -961,8 +879,11 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         </button>
       </div>
     </div>
-    <p class="say reveal">Lo bakal belajar lewat <b class="hl">bahasa simpel, real use case, dan gaya santai</b> kayak lo lagi nongkrong di coffee shop.</p>
-    <p class="say reveal">Gak pake istilah ribet. Gak pake rumus sakti. Semua dibikin <b class="hl">relatable</b> dan langsung bisa <b class="hl">dipraktekin hari itu juga.</b></p>
+    <div class="sectioncta reveal">
+      <a class="btn primary" href="#harga">Daftar Webinar Sekarang
+        <svg aria-hidden="true"><use href="#arrowmark"/></svg>
+      </a>
+    </div>
   </div>
 </section>
 
