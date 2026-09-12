@@ -16,8 +16,8 @@ because this page is built out of that one.
   the reader's problem, why the academy, the mentors, the bonuses, the Buffett
   line - the membership page's newer wording is used, because that is the copy
   that was rewritten. Where the webinar page says something only a webinar page
-  can - the date, the six materi, the four bonus values, the Rp9.298.000 total,
-  the two ticket prices - its own words are kept.
+  can - the six materi, the four bonus values, the Rp9.298.000 total, the two
+  ticket prices - its own words are kept.
 - **Visual language** is the membership page's, unchanged: near-black surfaces,
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
