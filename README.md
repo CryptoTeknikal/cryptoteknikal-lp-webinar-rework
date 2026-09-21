@@ -13,18 +13,20 @@ because this page is built out of that one.
   order, what each section argues, and what the reader is asked to do at the end
   of it. See [Section order](#section-order).
 - **Copy** is split. Where the two pages say the same thing - the hero promise,
-  why the academy, the mentors, the bonuses, the Buffett line - the membership
-  page's newer wording is used, because that is the copy that was rewritten.
-  Where the webinar page says something only a webinar page can - the six
-  materi, the four bonus values, the Rp9.298.000 total, the two ticket prices -
-  its own words are kept. The reader's problem is the webinar page's too: the
-  five rows under the film are the Scalev page's *Lo lagi ngerasa gini gak
-  sih?*, word for word.
+  the mentors, the bonuses, the Buffett line - the membership page's newer
+  wording is used, because that is the copy that was rewritten. Where the
+  webinar page says something only a webinar page can - the six materi, the
+  four bonus values, the Rp9.298.000 total, the two ticket prices - its own
+  words are kept. The reader's problem and why the academy are the webinar
+  page's too: the five rows under the film (*Lo lagi ngerasa gini gak sih?*)
+  and the four after the proof wall (*Kenapa Crypto Teknikal bisa bantu lo
+  cuan 2 digit*) are the Scalev page's, word for word.
 - **Visual language** is the membership page's, unchanged: near-black surfaces,
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
-  the membership page does not - the benefit list, the two-up pricing - is
-  drawn in that same language rather than in Scalev's.
+  the membership page does not - the zigzag rows and their 3D objects, the
+  benefit list, the two-up pricing - is drawn in that same language rather
+  than in Scalev's.
 
 The page is one self-contained file, `index.html`: no build step, no
 dependencies, no external CSS, JS, fonts or images. Fonts and every screenshot
@@ -46,16 +48,17 @@ Same server as the membership repo - see that README for the details.
 
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero - the webinar's own headline, with the membership page's testimonial
-   deck beside it (six member screenshots, crossfading)
-3. **Testimoni member** - a member's video and a CTA under it. Nothing stands
-   between the hero and the film, so the page makes its promise once and asks
-   once before the proof wall starts.
+   deck beside it (six member screenshots, crossfading), and **no button**
+3. **Testimoni member** - a member's video and a CTA under it. The hero makes
+   its promise without asking, so this is the page's first ask, and the only
+   one before the proof wall.
 4. ***Lo lagi ngerasa gini gak sih?*** - five problems, one to a row, each
    beside a drawn 3D object that changes sides from row to row; then *Kalo lo
    ngerasain hal di atas...* and a *Crypto Teknikal siap bantu lo!* pill. The
    pill is a label, not a button, so the ask under the film stays the only one.
 5. Proof - a moving wall of member screenshots, two columns against each other
-6. *Kenapa Pilih Crypto Teknikal Academy* - the logo sting and 4 value cards
+6. ***Kenapa Crypto Teknikal bisa bantu lo cuan 2 digit*** - the logo sting,
+   then four reasons in the same zigzag rows as the problem list
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
 9. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
@@ -118,9 +121,9 @@ What is new here, and only here:
 
 | what | where |
 |------|-------|
-| The five problem rows | `.painstack`, `.pain` |
-| Their five objects, drawn as SVG | `#pa-ask`, `#pa-cube`, `#pa-loss`, `#pa-folder`, `#pa-pct` |
-| The list's closing pill | `.painsiap` |
+| The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
+| Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
+| The problem list's closing pill | `.painsiap` |
 | The eleven-line benefit list | `.benefitbox` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
@@ -136,8 +139,10 @@ seventh materi means bringing its `<symbol>` back from the membership repo.
   has to move when the webinar does.
 - The fourth problem row is finished here: Scalev's image of it stops at
   "...bantuin lo mulai dengan cara yang", so the page ends it on "bener".
-- Responsive down to 360px, with a sticky bottom CTA bar on mobile that parks
-  itself whenever one of the page's own buttons is on screen.
+- Responsive down to 360px, with a sticky bottom CTA bar on mobile. It stays
+  parked until the hero has scrolled away, since the hero has no button and
+  the bar would put an ask back into it, and it parks again whenever one of the
+  page's own buttons is on screen.
 - `prefers-reduced-motion` disables every animation; the proof wall stops being
   a window and runs to its full height so all eight shots still show.
 - The footer disclaimer covers scope of service - the academy sells education,

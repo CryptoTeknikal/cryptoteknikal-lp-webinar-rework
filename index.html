@@ -161,8 +161,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    them would otherwise be the single word left over - and here that word is
    half of "Per Bulan", the part the promise turns on. */
 .hero h1{font-size:clamp(1.75rem,3.9vw,2.6rem);margin:0 0 18px;text-wrap:balance}
-.hero .lead{color:var(--ink2);font-size:clamp(1rem,1.35vw,1.15rem);max-width:560px;margin-bottom:26px}
-.herobtns{display:flex;gap:14px;flex-wrap:wrap}
+.hero .lead{color:var(--ink2);font-size:clamp(1rem,1.35vw,1.15rem);max-width:560px}
 
 /* Shots that share one slot: a deck. One is shown at a time in a box of a
    fixed shape, the rest wait behind it, and dots underneath say how many there
@@ -233,21 +232,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    gap above it is the one a head leaves below itself, so it reads as this
    section's closing rather than the next one's opening. */
 .sectioncta{margin-top:clamp(30px,3.6vw,44px);text-align:center}
-.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
-.vcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 20px;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;
-  display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:0}
-.vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-.vic{width:48px;height:48px;border-radius:13px;background:var(--soft2);display:flex;align-items:center;justify-content:center;color:var(--brand2);margin-bottom:15px}
-.vic svg{width:24px;height:24px}
-/* the four titles run to different lengths, so laid out as plain blocks the
-   descriptions would start at different heights and the row would stop scanning
-   across. Each card is a subgrid of .vgrid instead: chip, title and description
-   sit in three rows the grid owns, so the cards sharing a row get the same title
-   height whatever the copy says and however many columns are on screen - no line
-   reserve to keep in step with the wording. The card carries its own row-gap,
-   which is what keeps .vgrid's 18px gutter between the cards and out of them. */
-.vcard h3{font-size:1.1rem;margin-bottom:7px}
-.vcard p{font-size:.95rem;color:var(--mut)}
 
 /* ===== MENTORS =====
    stockwise.id closes with a founders row: two centred cards, each a round
@@ -305,28 +289,36 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .vidbox.playing::after{opacity:0}
 .vidbox.playing .vidplay{display:none}
 
-/* ===== LO LAGI NGERASA GINI =====
-   The Scalev page's list after the film: five problems, each a row of its own
-   with a 3D object beside it, the object changing sides from one row to the next
-   so the column reads down in a zigzag rather than as a stack of identical
-   bars. The objects are drawn here in the page's own glass-and-magenta rather
-   than shipped as Scalev's blue renders; the red and the gold stay, because on
-   those two they are the meaning - a loss, and money. The rows are one grid
-   each, and an odd row just swaps its two tracks, so the copy's column is the
-   same width whichever side the object stands on. The object comes first in
-   the markup so that on a phone, where a column beside it would be three words
-   wide, it can float and let the copy run on under it instead. */
-.painstack{list-style:none;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
-.pain{--art:96px;display:grid;grid-template-columns:var(--art) minmax(0,1fr);align-items:center;gap:clamp(18px,3vw,30px);
+/* ===== ZIGZAG ROWS =====
+   The way the Scalev page lays out a list it wants read one item at a time -
+   the problems after the film, the reasons after the proof wall: a row each,
+   a 3D object beside the copy, and the object changing sides from one row to
+   the next so the column reads down in a zigzag rather than as a stack of
+   identical bars. The objects are drawn here in the page's own glass-and-magenta
+   rather than shipped as Scalev's renders; the red and the gold stay, because
+   where they are used they are the meaning - a loss, and money.
+
+   Each row is one grid, and a row with its object on the right just swaps the
+   two tracks, so the copy's column is the same width whichever side the object
+   stands on. The problem list opens with its object on the right and the
+   reasons with theirs on the left, as on Scalev - .flip is the second. The
+   object comes first in the markup so that on a phone, where a column beside
+   it would be three words wide, it can float and let the copy run on under it
+   instead. */
+.zigstack{list-style:none;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.zigrow{--art:96px;display:grid;grid-template-columns:var(--art) minmax(0,1fr);align-items:center;gap:clamp(18px,3vw,30px);
   background:var(--card);border:1px solid var(--line);border-radius:var(--r);
   padding:22px clamp(20px,3vw,28px);box-shadow:var(--shadow-sm)}
-.pain:nth-child(odd){grid-template-columns:minmax(0,1fr) var(--art)}
-.pain:nth-child(odd) .painart{order:1}
-.painart{display:block;width:var(--art);height:var(--art);overflow:visible;
+.zigstack:not(.flip) > .zigrow:nth-child(odd),
+.zigstack.flip > .zigrow:nth-child(even){grid-template-columns:minmax(0,1fr) var(--art)}
+.zigstack:not(.flip) > .zigrow:nth-child(odd) .zigart,
+.zigstack.flip > .zigrow:nth-child(even) .zigart{order:1}
+.zigart{display:block;width:var(--art);height:var(--art);overflow:visible;
   filter:drop-shadow(0 10px 22px rgba(255,0,255,.22))}
-.pain p{font-size:.98rem;line-height:1.62;color:var(--ink2)}
-.pain p b{color:var(--ink);font-weight:600}
-/* the list's verdict: one line in the reader's own terms, then the promise in a
+.zigrow p{font-size:.98rem;line-height:1.62;color:var(--ink2)}
+.zigrow p b{color:var(--ink);font-weight:600}
+/* ===== LO LAGI NGERASA GINI =====
+   The problem list's verdict: one line in the reader's own terms, then the promise in a
    pill - the flag the Berdua ticket wears, grown. A label and not a button, so it
    has no arrow and takes no tap: the page has just asked, under the film, and
    the next thing it owes the reader is the proof wall rather than a second ask. */
@@ -359,10 +351,13 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .bacard.after .d{background:rgba(255,0,255,.12);color:var(--brand2)}
 
 /* ===== MODUL =====
-   Nine titles running from two words to six, so the cards are subgrids of
-   .mgrid the way the value cards are of .vgrid: chip, tag, title and line sit in
-   four rows the grid owns, and the cards sharing a row start their copy together
-   however long the title above it ran. */
+   The titles run from two words to six, so laid out as plain blocks the lines
+   under them would start at different heights and the row would stop scanning
+   across. Each card is a subgrid of .mgrid instead: still, tag, title and line
+   sit in four rows the grid owns, so the cards sharing a row start their copy
+   together however long the title above it ran - no line reserve to keep in
+   step with the wording. The card carries its own row-gap, which is what keeps
+   .mgrid's gutter between the cards and out of them. */
 .mgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .mcard{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px 22px 26px;box-shadow:var(--shadow-sm);
   display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:0;transition:transform .2s,box-shadow .2s}
@@ -387,7 +382,7 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 
 /* ===== PERSONAS =====
    Six titles of uneven length, so the cells are subgrids of .pgrid the way the
-   value cards are of .vgrid: emoji, title and line sit in rows the grid owns,
+   module cards are of .mgrid: emoji, title and line sit in rows the grid owns,
    and the three cells in a row start their description together. */
 .pgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .pcell{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:24px;box-shadow:var(--shadow-sm);transition:transform .2s;
@@ -552,18 +547,14 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    out to schedule the notes at. Everything else is the settled lockup, and the
    keyframes run from the hidden state up to it - so under prefers-reduced-motion,
    where the page kills every animation, the finished lockup is what shows. */
-/* The stage opens the Kenapa section, sitting between that section's eyebrow and
-   its cards. It has to sit the same distance from both, so the gap is one value:
-   .stagehead gives up its bottom margin and the eyebrow above and the stage below
+/* The stage opens the Kenapa section, sitting between that section's heading and
+   its rows. It has to sit the same distance from both, so the gap is one value:
+   .stagehead gives up its bottom margin and the heading above and the stage below
    each spend --stagegap. */
 :root{--stagegap:clamp(28px,3.2vw,38px)}
-.stingwrap{max-width:860px;margin:0 auto var(--stagegap)}
-/* This section's eyebrow is its only heading, so it is the h2 - .eyebrow outranks
-   the h1,h2,h3 rule on every property they share, and the chip looks unchanged.
-   It is also the longest eyebrow on the page, long enough to wrap inside its own
-   pill on a phone, so below ~450px it takes its size from the viewport instead. */
+.stingwrap{max-width:760px;margin:0 auto var(--stagegap)}
 .center.stagehead{margin-bottom:0}
-.stagehead .eyebrow{margin-bottom:var(--stagegap);white-space:nowrap;font-size:min(.74rem,2.8vw)}
+.stagehead h2{margin-bottom:var(--stagegap)}
 .sting{position:relative;aspect-ratio:16/7;border-radius:28px;overflow:hidden;cursor:pointer;
   display:flex;align-items:center;justify-content:center;
   background:radial-gradient(118% 148% at 50% 50%,#180724 0%,#0a0611 45%,#040309 100%);
@@ -708,9 +699,9 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 .stickycta{position:fixed;left:0;right:0;bottom:0;z-index:90;background:rgba(8,6,13,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));display:none;box-shadow:0 -6px 24px rgba(0,0,0,.5);
   transform:translateY(110%);visibility:hidden;
   transition:transform .28s cubic-bezier(.22,1,.36,1),visibility .28s}
-/* raised by the script once the hero CTA is behind the nav - until then the two
-   would be asking for the same tap at the same time. Hidden rather than merely
-   pushed off, so it takes no focus while it is parked. */
+/* raised by the script once the hero is behind the nav - the hero makes its
+   promise without an ask, and the bar would put one back. Hidden rather than
+   merely pushed off, so it takes no focus while it is parked. */
 .stickycta.up{transform:none;visibility:visible}
 .stickycta .btn{width:100%;justify-content:center}
 
@@ -718,19 +709,14 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .mgrid,.pgrid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:900px){
-  /* One column, and the CTA moves under the screenshot: on a phone the proof is
-     what earns the tap, so the button should be the thing the reader meets on
-     the way out of it rather than something they scroll past first. The copy
-     wrapper drops out with display:contents so the heading, lead, image and
-     button are all grid items in one column, and only the button is reordered.
-     Row gap goes to zero and the spacing is carried by margins, which lets the
-     heading sit closer to its lead than the image does to either. */
+  /* One column. The copy wrapper drops out with display:contents so the
+     eyebrow, heading, lead and image are all grid items in one column; row gap
+     goes to zero and the spacing is carried by margins, which lets the heading
+     sit closer to its lead than the image does to either. */
   .herogrid{grid-template-columns:1fr;gap:0}
   .herocopy{display:contents}
   .hero .lead{margin-bottom:40px}
-  .herobtns{order:1;margin-top:40px}
   .mock{max-width:420px;margin:0 auto;width:100%}
-  .vgrid{grid-template-columns:repeat(2,1fr)}
   .bagrid{grid-template-columns:1fr}
   /* stacked, the portrait keeps the last word and stays on the rule */
   .qrow{grid-template-columns:1fr;justify-items:center;text-align:center;gap:30px}
@@ -744,7 +730,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 @media(max-width:620px){
   .sting{aspect-ratio:16/9}
   .sting-replay{top:12px;right:12px;bottom:auto}
-  .vgrid,.mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
+  .mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
   /* an icon and a single word do not need a full-width card each, so the three
      conditions stay in one row here and only shrink. */
   .mkt{gap:10px}
@@ -757,14 +743,18 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
      screenshot that is already small. */
   .proofwall{gap:10px;height:clamp(400px,60vh,520px)}
   .proofwall figure{margin-bottom:10px}
-  .herobtns .btn{flex:1;justify-content:center}
   .faq .a p{padding-left:18px}
-  /* the object floats in the row's top corner, on the side it stood on, and the
+  .zigrow{--art:64px;padding:18px;gap:16px}
+  .zigrow p{font-size:.95rem}
+}
+@media(max-width:480px){
+  /* a column beside the object is three words wide from here down, so the
+     object floats in the row's top corner, on the side it stood on, and the
      copy wraps it: three lines beside it, the rest at the card's full width */
-  .pain{--art:64px;display:flow-root;padding:18px}
-  .pain .painart{float:left;margin:3px 14px 4px 0}
-  .pain:nth-child(odd) .painart{float:right;margin:3px 0 4px 14px}
-  .pain p{font-size:.95rem}
+  .zigrow{display:flow-root}
+  .zigrow .zigart{float:left;margin:3px 14px 4px 0}
+  .zigstack:not(.flip) > .zigrow:nth-child(odd) .zigart,
+  .zigstack.flip > .zigrow:nth-child(even) .zigart{float:right;margin:3px 0 4px 14px}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -777,8 +767,10 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 }
 /* The hero's eyebrow. At phone widths .herocopy is display:contents, so the
    pill becomes a grid item of the hero grid and would be blockified to the
-   column's full width - justify-self keeps it the size of its own text. */
-.herocopy .eyebrow{justify-self:start;margin-bottom:16px}
+   column's full width - justify-self keeps it the size of its own text. It is
+   too long to fit a phone at its own size, and wrapped it becomes two lines
+   inside one pill, so below ~450px it takes its size from the viewport. */
+.herocopy .eyebrow{justify-self:start;margin-bottom:16px;white-space:nowrap;font-size:min(.74rem,2.8vw)}
 
 /* ===== WHAT THE TICKET BUYS =====
    Said once above the two prices rather than twice inside them: the plans
@@ -856,11 +848,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <span class="eyebrow hot">Perhatian: buat lo yang capek rugi mulu</span>
       <h1>Bongkar <span class="hl">Rahasia Trading Crypto</span> Dari Nol Hingga <span class="hl">Profit 100 Juta</span> Tanpa&nbsp;Hoki</h1>
       <p class="lead">Telah membantu 1000+ member cuan konsisten tiap bulannya.</p>
-      <div class="herobtns">
-        <a class="btn primary" href="#harga">Daftar Webinar Sekarang
-          <svg aria-hidden="true"><use href="#arrowmark"/></svg>
-        </a>
-      </div>
     </div>
 
     <div class="mock">
@@ -926,54 +913,54 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </div>
 </section>
 
-<!-- ===== LO LAGI NGERASA GINI: THE OBJECTS =====
-     One per problem, drawn as one set: a single light from the top left, a face,
-     a darker thickness under it, a hairline of light along the edges that face
-     the lamp, and the same four fills throughout. Decorative - every row says
-     what it means in words - so each instance is aria-hidden. -->
+<!-- ===== ZIGZAG OBJECTS =====
+     One per row, for both lists, drawn as one set: a single light from the top
+     left, a face, a darker thickness under it, a hairline of light along the
+     edges that face the lamp, and the same few fills throughout. Decorative -
+     every row says what it means in words - so each instance is aria-hidden. -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <linearGradient id="pabody" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zobody" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#ff6bff"/><stop offset=".5" stop-color="#d21fe6"/><stop offset="1" stop-color="#7a24d6"/>
     </linearGradient>
-    <linearGradient id="patop" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zotop" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#ffc6ff"/><stop offset="1" stop-color="#ff5cff"/>
     </linearGradient>
-    <linearGradient id="padeep" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zodeep" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#8a1fd0"/><stop offset="1" stop-color="#3d0f7a"/>
     </linearGradient>
-    <linearGradient id="paglass" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zoglass" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#e59bff" stop-opacity=".55"/><stop offset="1" stop-color="#7a24d6" stop-opacity=".3"/>
     </linearGradient>
-    <linearGradient id="pagold" x1="0" y1="0" x2="0" y2="1">
+    <linearGradient id="zogold" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0" stop-color="#ffe6a8"/><stop offset="1" stop-color="#f7b955"/>
     </linearGradient>
-    <linearGradient id="pagoldside" x1="0" y1="0" x2="1" y2="0">
+    <linearGradient id="zogoldside" x1="0" y1="0" x2="1" y2="0">
       <stop offset="0" stop-color="#e09a3a"/><stop offset=".5" stop-color="#b8741f"/><stop offset="1" stop-color="#8a5314"/>
     </linearGradient>
-    <linearGradient id="pared" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zored" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#ff9a8c"/><stop offset=".55" stop-color="#ff5f52"/><stop offset="1" stop-color="#d42f2a"/>
     </linearGradient>
-    <linearGradient id="pareddeep" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="zoreddeep" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#b3261f"/><stop offset="1" stop-color="#6e1210"/>
     </linearGradient>
   </defs>
 
   <!-- Bingung: a speech bubble asking, a pane of glass behind it asking too -->
-  <symbol id="pa-ask" viewBox="0 0 120 120">
-    <rect x="44" y="10" width="64" height="56" rx="16" fill="url(#paglass)" stroke="#fff" stroke-opacity=".3" stroke-width="1.2"/>
-    <path transform="translate(3 4)" fill="url(#padeep)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
-    <path fill="url(#pabody)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
+  <symbol id="zo-ask" viewBox="0 0 120 120">
+    <rect x="44" y="10" width="64" height="56" rx="16" fill="url(#zoglass)" stroke="#fff" stroke-opacity=".3" stroke-width="1.2"/>
+    <path transform="translate(3 4)" fill="url(#zodeep)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
+    <path fill="url(#zobody)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
     <path d="M22 72V47A11 11 0 0 1 33 36H66" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
     <path d="M42.5 53A9.5 9.5 0 1 1 57.5 60.5C54 63 52 64.5 52 69" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
     <circle cx="52" cy="79" r="4" fill="#fff"/>
   </symbol>
 
   <!-- Takut rugi: a box with a question on every side you can see -->
-  <symbol id="pa-cube" viewBox="0 0 120 120">
-    <path d="M60 60L98 40V82L60 102Z" fill="url(#padeep)" stroke="url(#padeep)" stroke-width="6" stroke-linejoin="round"/>
-    <path d="M22 40L60 60V102L22 82Z" fill="url(#pabody)" stroke="url(#pabody)" stroke-width="6" stroke-linejoin="round"/>
-    <path d="M60 20L98 40L60 60L22 40Z" fill="url(#patop)" stroke="url(#patop)" stroke-width="6" stroke-linejoin="round"/>
+  <symbol id="zo-cube" viewBox="0 0 120 120">
+    <path d="M60 60L98 40V82L60 102Z" fill="url(#zodeep)" stroke="url(#zodeep)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M22 40L60 60V102L22 82Z" fill="url(#zobody)" stroke="url(#zobody)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M60 20L98 40L60 60L22 40Z" fill="url(#zotop)" stroke="url(#zotop)" stroke-width="6" stroke-linejoin="round"/>
     <path d="M22 40L60 60L98 40" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.6" stroke-linejoin="round"/>
     <g fill="none" stroke="#fff" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
       <path transform="matrix(.95 .5 0 1 22 40)" d="M13.5 15A6.8 6.8 0 1 1 24.5 20.5C21.8 22.2 20 23.3 20 27"/>
@@ -984,56 +971,56 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </symbol>
 
   <!-- Sinyal sana-sini, tetep loss: the money, and the line taking it down -->
-  <symbol id="pa-loss" viewBox="0 0 120 120">
-    <path fill="url(#pabody)" d="M36 54C22 63 12 78 12 90C12 102 22 108 41 108C60 108 70 102 70 90C70 78 60 63 46 54Z"/>
-    <path fill="url(#pabody)" d="M36 54L31 43C35 45 38 41 41 41C44 41 47 45 51 43L46 54Z"/>
-    <rect x="32" y="51" width="18" height="6" rx="3" fill="url(#pagold)"/>
+  <symbol id="zo-loss" viewBox="0 0 120 120">
+    <path fill="url(#zobody)" d="M36 54C22 63 12 78 12 90C12 102 22 108 41 108C60 108 70 102 70 90C70 78 60 63 46 54Z"/>
+    <path fill="url(#zobody)" d="M36 54L31 43C35 45 38 41 41 41C44 41 47 45 51 43L46 54Z"/>
+    <rect x="32" y="51" width="18" height="6" rx="3" fill="url(#zogold)"/>
     <path d="M21 88C21 77 27 69 33 63" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
     <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
       <path d="M47 79.5C46 77 44 76 41 76C37.5 76 35 78 35 81C35 84 38 85.5 41 86C44 86.5 47 88 47 91C47 94 44.5 96 41 96C37.5 96 35.5 94.5 35 92"/>
       <path d="M41 71.5V100.5"/>
     </g>
-    <g id="pacoin">
-      <path d="M66 94v8a17 6 0 0 0 34 0v-8Z" fill="url(#pagoldside)"/>
-      <ellipse cx="83" cy="94" rx="17" ry="6" fill="url(#pagold)"/>
+    <g id="zocoin">
+      <path d="M66 94v8a17 6 0 0 0 34 0v-8Z" fill="url(#zogoldside)"/>
+      <ellipse cx="83" cy="94" rx="17" ry="6" fill="url(#zogold)"/>
     </g>
-    <use href="#pacoin" y="-8"/>
-    <use href="#pacoin" y="-16"/>
-    <use href="#pacoin" y="-24"/>
+    <use href="#zocoin" y="-8"/>
+    <use href="#zocoin" y="-16"/>
+    <use href="#zocoin" y="-24"/>
     <ellipse cx="83" cy="70" rx="12" ry="3.6" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/>
-    <g transform="translate(3 4)" fill="url(#pareddeep)" stroke="url(#pareddeep)">
+    <g transform="translate(3 4)" fill="url(#zoreddeep)" stroke="url(#zoreddeep)">
       <path d="M12 16L38 36L52 24L82 50" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M93 59L75 58L89 42Z" stroke-width="3" stroke-linejoin="round"/>
     </g>
-    <g fill="url(#pared)" stroke="url(#pared)">
+    <g fill="url(#zored)" stroke="url(#zored)">
       <path d="M12 16L38 36L52 24L82 50" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
       <path d="M93 59L75 58L89 42Z" stroke-width="3" stroke-linejoin="round"/>
     </g>
   </symbol>
 
   <!-- Bukan buat gue: the chart filed away, still pointing up -->
-  <symbol id="pa-folder" viewBox="0 0 120 120">
-    <path fill="url(#padeep)" d="M16 36A7 7 0 0 1 23 29H43A6 6 0 0 1 47.6 31.2L53 37H97A7 7 0 0 1 104 44V94A7 7 0 0 1 97 101H23A7 7 0 0 1 16 94Z"/>
+  <symbol id="zo-folder" viewBox="0 0 120 120">
+    <path fill="url(#zodeep)" d="M16 36A7 7 0 0 1 23 29H43A6 6 0 0 1 47.6 31.2L53 37H97A7 7 0 0 1 104 44V94A7 7 0 0 1 97 101H23A7 7 0 0 1 16 94Z"/>
     <g transform="rotate(-7 60 50)">
       <rect x="30" y="16" width="60" height="62" rx="6" fill="#f7eefe"/>
       <path d="M40 28H66M40 37H58" stroke="#ff5cff" stroke-width="4.5" stroke-linecap="round"/>
       <path d="M40 46H74" stroke="#d9c8ea" stroke-width="3" stroke-linecap="round"/>
     </g>
     <path transform="translate(0 3)" fill="#4a1288" d="M18 50H102A6 6 0 0 1 107.9 57L101.5 97A8 8 0 0 1 93.6 104H26.4A8 8 0 0 1 18.5 97L12.1 57A6 6 0 0 1 18 50Z"/>
-    <path fill="url(#pabody)" fill-opacity=".95" d="M18 50H102A6 6 0 0 1 107.9 57L101.5 97A8 8 0 0 1 93.6 104H26.4A8 8 0 0 1 18.5 97L12.1 57A6 6 0 0 1 18 50Z"/>
+    <path fill="url(#zobody)" fill-opacity=".95" d="M18 50H102A6 6 0 0 1 107.9 57L101.5 97A8 8 0 0 1 93.6 104H26.4A8 8 0 0 1 18.5 97L12.1 57A6 6 0 0 1 18 50Z"/>
     <path d="M18.5 55.5H100" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
-    <path d="M32 90L46 78L58 86L80 66" fill="none" stroke="url(#pagold)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M88 58.6L86 72.7L74 59.3Z" fill="url(#pagold)" stroke="url(#pagold)" stroke-width="2.5" stroke-linejoin="round"/>
+    <path d="M32 90L46 78L58 86L80 66" fill="none" stroke="url(#zogold)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M88 58.6L86 72.7L74 59.3Z" fill="url(#zogold)" stroke="url(#zogold)" stroke-width="2.5" stroke-linejoin="round"/>
   </symbol>
 
   <!-- Stuck: the number that never moves -->
-  <symbol id="pa-pct" viewBox="0 0 120 120">
-    <g transform="translate(4 5)" fill="none" stroke="url(#pareddeep)" stroke-linecap="round">
+  <symbol id="zo-pct" viewBox="0 0 120 120">
+    <g transform="translate(4 5)" fill="none" stroke="url(#zoreddeep)" stroke-linecap="round">
       <circle cx="38" cy="38" r="13" stroke-width="11"/>
       <circle cx="82" cy="82" r="13" stroke-width="11"/>
       <path d="M86 20L34 100" stroke-width="12"/>
     </g>
-    <g fill="none" stroke="url(#pared)" stroke-linecap="round">
+    <g fill="none" stroke="url(#zored)" stroke-linecap="round">
       <circle cx="38" cy="38" r="13" stroke-width="11"/>
       <circle cx="82" cy="82" r="13" stroke-width="11"/>
       <path d="M86 20L34 100" stroke-width="12"/>
@@ -1044,6 +1031,65 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <path d="M80.5 21.5L73 33"/>
     </g>
   </symbol>
+  <!-- Terbukti profitable: a coin, its face stamped with the line going up -->
+  <symbol id="zo-coin" viewBox="0 0 120 120">
+    <ellipse cx="66" cy="60" rx="36" ry="43" fill="url(#zogoldside)"/>
+    <rect x="56" y="17" width="10" height="86" fill="url(#zogoldside)"/>
+    <ellipse cx="56" cy="60" rx="36" ry="43" fill="url(#zogold)"/>
+    <ellipse cx="56" cy="60" rx="27" ry="33" fill="none" stroke="#d99a3a" stroke-width="2.6"/>
+    <path d="M29 48A28 34 0 0 1 45 23" fill="none" stroke="#fff" stroke-opacity=".7" stroke-width="3" stroke-linecap="round"/>
+    <path d="M40 72L50 61L58 67L69 52" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <g transform="translate(1 1)" fill="#b8741f" stroke="#b8741f" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M40 72L50 61L58 67L69 52" fill="none" stroke-width="5.5"/>
+      <path d="M74.3 44.7L75 56.4L63 47.6Z" stroke-width="2"/>
+    </g>
+  </symbol>
+
+  <!-- Materi dari 0: the checklist, worked down from the top -->
+  <symbol id="zo-list" viewBox="0 0 120 120">
+    <g transform="rotate(8 60 62)">
+      <rect x="30" y="22" width="60" height="84" rx="11" transform="translate(4 5)" fill="url(#zodeep)"/>
+      <rect x="30" y="22" width="60" height="84" rx="11" fill="url(#zobody)"/>
+      <path d="M34.5 94V35A8 8 0 0 1 42.5 27" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+      <rect x="38" y="33" width="44" height="64" rx="5" fill="#f7eefe"/>
+      <circle cx="60" cy="15" r="5.5" fill="none" stroke="url(#zogold)" stroke-width="3.4"/>
+      <rect x="45" y="16" width="30" height="13" rx="5" fill="url(#zogold)"/>
+      <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M43.5 48L47 51.5L53 44.5M43.5 63L47 66.5L53 59.5M43.5 78L47 81.5L53 74.5" stroke="#d21fe6" stroke-width="3.2"/>
+        <path d="M58 48.5H76M58 63.5H73M58 78.5H75" stroke="#d9c8ea" stroke-width="3.4"/>
+      </g>
+    </g>
+  </symbol>
+
+  <!-- Komunitas: someone on the line, and the conversation -->
+  <symbol id="zo-help" viewBox="0 0 120 120">
+    <path transform="translate(2 3)" d="M26 70V60A34 34 0 0 1 94 60V70" fill="none" stroke="url(#zodeep)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M26 70V60A34 34 0 0 1 94 60V70" fill="none" stroke="url(#zobody)" stroke-width="9" stroke-linecap="round"/>
+    <path d="M29.5 57A31 31 0 0 1 48 31" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round"/>
+    <path d="M24 94C26 104 34 108 46 107" fill="none" stroke="#d9c8ea" stroke-width="3.6" stroke-linecap="round"/>
+    <rect x="44" y="102.5" width="14" height="9" rx="4.5" fill="url(#zobody)"/>
+    <rect x="14" y="62" width="22" height="36" rx="10" transform="translate(3 4)" fill="url(#zodeep)"/>
+    <rect x="14" y="62" width="22" height="36" rx="10" fill="url(#zobody)"/>
+    <rect x="31" y="67" width="7" height="26" rx="3.5" fill="url(#zotop)"/>
+    <rect x="84" y="62" width="22" height="36" rx="10" transform="translate(3 4)" fill="url(#zodeep)"/>
+    <rect x="84" y="62" width="22" height="36" rx="10" fill="url(#zobody)"/>
+    <rect x="82" y="67" width="7" height="26" rx="3.5" fill="url(#zotop)"/>
+    <path d="M19 88V73M89 88V73" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.2" stroke-linecap="round"/>
+    <path transform="translate(2 3)" fill="#c3a9dc" d="M51 44H69A11 11 0 0 1 80 55V63A11 11 0 0 1 69 74H58L49 82L51 74A11 11 0 0 1 40 63V55A11 11 0 0 1 51 44Z"/>
+    <path fill="#f7eefe" d="M51 44H69A11 11 0 0 1 80 55V63A11 11 0 0 1 69 74H58L49 82L51 74A11 11 0 0 1 40 63V55A11 11 0 0 1 51 44Z"/>
+    <g fill="#d21fe6"><circle cx="50" cy="59" r="3.6"/><circle cx="60" cy="59" r="3.6"/><circle cx="70" cy="59" r="3.6"/></g>
+  </symbol>
+
+  <!-- Konsultasi private: two voices, one of them the mentor's -->
+  <symbol id="zo-chat" viewBox="0 0 120 120">
+    <path transform="translate(3 4)" fill="#c3a9dc" d="M60 14H92A14 14 0 0 1 106 28V46A14 14 0 0 1 92 60H90L98 71L80 60H60A14 14 0 0 1 46 46V28A14 14 0 0 1 60 14Z"/>
+    <path fill="#f7eefe" d="M60 14H92A14 14 0 0 1 106 28V46A14 14 0 0 1 92 60H90L98 71L80 60H60A14 14 0 0 1 46 46V28A14 14 0 0 1 60 14Z"/>
+    <g fill="#d21fe6"><circle cx="64" cy="37" r="4.6"/><circle cx="76" cy="37" r="4.6"/><circle cx="88" cy="37" r="4.6"/></g>
+    <path transform="translate(3 4)" fill="url(#zodeep)" d="M28 46H62A14 14 0 0 1 76 60V80A14 14 0 0 1 62 94H40L23 106L28 94A14 14 0 0 1 14 80V60A14 14 0 0 1 28 46Z"/>
+    <path fill="url(#zobody)" d="M28 46H62A14 14 0 0 1 76 60V80A14 14 0 0 1 62 94H40L23 106L28 94A14 14 0 0 1 14 80V60A14 14 0 0 1 28 46Z"/>
+    <path d="M20 78V61A9 9 0 0 1 29 52H56" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="2.6" stroke-linecap="round"/>
+    <g fill="#fff"><circle cx="33" cy="70" r="4.6"/><circle cx="45" cy="70" r="4.6"/><circle cx="57" cy="70" r="4.6"/></g>
+  </symbol>
 </svg>
 
 <!-- ===== LO LAGI NGERASA GINI ===== -->
@@ -1052,25 +1098,25 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     <div class="center reveal">
       <h2>Lo lagi <span class="hl">ngerasa&nbsp;gini</span> gak sih?</h2>
     </div>
-    <ul class="painstack reveal">
-      <li class="pain">
-        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-ask"/></svg>
+    <ul class="zigstack reveal">
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-ask"/></svg>
         <p><b>Bingung banget mulai dari mana.</b> YouTube banyak, channel Telegram juga seabrek, tapi malah bikin tambah pusing. Yang satu bilang A, yang satu bilang B, kepala gue kayak mau meledak.</p>
       </li>
-      <li class="pain">
-        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-cube"/></svg>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-cube"/></svg>
         <p><b>Takut rugi.</b> Udah banyak denger cerita temen yang modal ilang, atau ikut call terus nyangkut. Jadi makin takut entry.</p>
       </li>
-      <li class="pain">
-        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-loss"/></svg>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-loss"/></svg>
         <p><b>Udah coba ikut sinyal sana-sini&hellip; tetep loss.</b> Ngikutin doang tanpa ngerti kenapa bisa buy/sell di situ. Ujung-ujungnya bukan belajar, malah jadi gambling.</p>
       </li>
-      <li class="pain">
-        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-folder"/></svg>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-folder"/></svg>
         <p><b>Makin lama malah makin ngerasa &lsquo;kayaknya ini bukan buat gue deh&rsquo;.</b> Padahal, deep down lo tahu&hellip; lo cuma butuh orang yang bisa bantuin lo mulai dengan cara yang bener.</p>
       </li>
-      <li class="pain">
-        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-pct"/></svg>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-pct"/></svg>
         <p><b>Dan parahnya lagi, lo ngerasa stuck di lingkaran belajar yang itu-itu aja.</b> Hari ini belajar candlestick, besok lupa. Lusa coba ikut kelas, tapi gak ngerti juga. Ujungnya muter di tempat. Gak ada progress.</p>
       </li>
     </ul>
@@ -1113,11 +1159,13 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   </div>
 </section>
 
-<!-- ===== KENAPA CTA ===== -->
+<!-- ===== KENAPA CRYPTO TEKNIKAL =====
+     The Scalev page's four reasons, straight after the proof wall: the stage
+     says whose reasons they are, and the rows say what they are. -->
 <section class="band soft seam">
   <div class="wrap">
     <div class="center stagehead reveal">
-      <h2 class="eyebrow">Kenapa Pilih Crypto Teknikal Academy</h2>
+      <h2>Kenapa Crypto Teknikal bisa bantu lo <span class="hl">cuan 2&nbsp;digit</span></h2>
     </div>
     <div class="stingwrap reveal">
       <div class="sting" id="sting" role="img" aria-label="Animasi pembuka logo Crypto Teknikal Academy">
@@ -1138,28 +1186,24 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         </button>
       </div>
     </div>
-    <div class="vgrid reveal">
-      <div class="vcard">
-        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7 4 5"/><path d="M3 21h18"/></svg></div>
-        <h3>Sistem Trading Yang Terbukti Profitable</h3>
-        <p>Terbukti profitable di bull, bear, maupun sideways market.</p>
-      </div>
-      <div class="vcard">
-        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5V5a2 2 0 0 1 2-2h13v18H6a2 2 0 0 1-2-1.5z"/><path d="M8 7h7M8 11h7"/></svg></div>
-        <h3>Materi Trading Dari 0</h3>
-        <p>Hingga bisa menaklukan market crypto secara konsisten.</p>
-      </div>
-      <div class="vcard">
-        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/></svg></div>
-        <h3>Komunitas Ekslusif Dua Arah</h3>
-        <p>Untuk diskusi dan saling dukung dalam segala permasalahan lo selama trading crypto.</p>
-      </div>
-      <div class="vcard">
-        <div class="vic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><path d="M16 11l6-4v10l-6-4z"/></svg></div>
-        <h3>Live Mentoring Mingguan Bareng Mentor</h3>
-        <p>Untuk arahan saat praktek trading dan diskusi kemana arah pasar ke depannya.</p>
-      </div>
-    </div>
+    <ul class="zigstack flip reveal">
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-coin"/></svg>
+        <p><b>Sistem trading yang terbukti profitable di berbagai market</b> baik bull market, bear market, maupun sideways</p>
+      </li>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-list"/></svg>
+        <p><b>Materi trading dari 0</b> hingga bisa menaklukan market crypto</p>
+      </li>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-help"/></svg>
+        <p><b>Komunitas eksklusif</b> untuk diskusi dan supportif dalam segala permasalahan lo selama trading crypto</p>
+      </li>
+      <li class="zigrow">
+        <svg class="zigart" viewBox="0 0 120 120" aria-hidden="true"><use href="#zo-chat"/></svg>
+        <p><b>Konsultasi Private 1&nbsp;on&nbsp;1 24/7</b> bersama mentor crypto melalui chat</p>
+      </li>
+    </ul>
   </div>
 </section>
 
@@ -1683,20 +1727,21 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 
 <script>
 (function(){
-  // nav shadow on scroll, and the sticky buy bar that rides with it. The bar is
-  // only worth its space once the hero CTA has gone behind the nav - measured
-  // against the nav's own height, because that is the point the hero button
-  // stops being visible - and it stands down again wherever one of the page's
-  // own buttons has come back on screen: the three that close a section, the
-  // plan's. Either way the reader is never offered the same tap twice at once.
+  // nav shadow on scroll, and the sticky buy bar that rides with it. The hero
+  // makes its promise without a button - the first ask is the one under the
+  // film - so the bar stays parked until the whole hero has gone behind the nav,
+  // measured against the nav's own height, and does not put an ask back into
+  // the promise. It stands down again wherever one of the page's own buttons
+  // has come back on screen: the ones that close a section, the plans'. Either
+  // way the reader is never offered the same tap twice at once.
   var nav = document.getElementById('nav');
   var stickycta = document.querySelector('.stickycta');
-  var heroCta = document.querySelector('.herobtns .btn');
+  var hero = document.querySelector('.hero');
   var pageCtas = Array.prototype.slice.call(document.querySelectorAll('.btn.primary'))
-    .filter(function(b){ return b !== heroCta && !(stickycta && stickycta.contains(b)); });
+    .filter(function(b){ return !(stickycta && stickycta.contains(b)); });
   var onScroll = function(){
     nav.classList.toggle('scrolled', window.scrollY > 8);
-    if(stickycta && heroCta){
+    if(stickycta && hero){
       // on screen means between the nav's bottom edge, where a button stops
       // being visible, and the line the reveal uses, where it starts being.
       var offered = pageCtas.some(function(b){
@@ -1704,7 +1749,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         return r.bottom > nav.offsetHeight && r.top < window.innerHeight - 60;
       });
       stickycta.classList.toggle('up',
-        heroCta.getBoundingClientRect().bottom < nav.offsetHeight && !offered);
+        hero.getBoundingClientRect().bottom < nav.offsetHeight && !offered);
     }
   };
   onScroll();
