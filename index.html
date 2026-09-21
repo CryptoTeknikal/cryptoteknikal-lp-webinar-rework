@@ -224,8 +224,10 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .center{text-align:center;max-width:660px;margin:0 auto clamp(34px,4vw,50px)}
 .center h2{text-wrap:balance}
 .center .lead{margin-top:12px}
-/* a section whose eyebrow is the whole heading: the pill carries its own gap
-   to the cards, so it does not also need the one it uses under a heading. */
+/* a section whose eyebrow is the whole heading: the pill keeps the distance it
+   would to a heading under it, rather than the head's full gap to the content
+   on top of that. */
+.center.labelonly{margin-bottom:clamp(18px,2vw,22px)}
 .center.labelonly .eyebrow{margin-bottom:0}
 /* the last line of a section that has just finished making its case - under the
    nine modules and what they are worth, under the last answered question. The
@@ -317,11 +319,17 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    the next thing it owes the reader is the proof wall rather than a second ask. */
 .painend{text-align:center;margin-top:clamp(30px,3.6vw,44px)}
 .painend p{color:var(--ink2);font-size:clamp(1rem,1.4vw,1.1rem);text-wrap:balance}
-/* one line at any width: on the narrowest phones the type gives way before the
-   pill wraps, since "LO!" alone on a second line is the one way it can break. */
-.painsiap{display:inline-block;margin-top:16px;font-size:min(.86rem,3.4vw);font-weight:800;white-space:nowrap;
+/* one line wherever it fits. On a phone it does not, and shrinking the type to
+   make it would leave it too small to read, so it breaks - but only between its
+   two halves, the one place the line reads as two. */
+.painsiap{display:inline-block;margin-top:16px;font-size:min(.86rem,3.4vw);font-weight:800;
   letter-spacing:.13em;text-transform:uppercase;color:#fff;background:var(--grad);border-radius:99px;
   padding:12px 22px;box-shadow:0 12px 30px rgba(255,0,255,.34)}
+.painsiap span{white-space:nowrap}
+@media(max-width:520px){
+  .painsiap{border-radius:20px;line-height:1.55;padding:12px 24px}
+  .painsiap span{display:block}
+}
 
 /* ===== BEFORE / AFTER ===== */
 .bagrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
@@ -604,14 +612,6 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .sting-vig:after{content:"";position:absolute;inset:0;opacity:.06;mix-blend-mode:overlay;
   background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='120' height='120' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-.sting-replay{position:absolute;right:14px;bottom:14px;z-index:3;
-  display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:99px;
-  background:rgba(255,255,255,.07);border:1px solid var(--line2);color:var(--ink2);
-  font:inherit;font-size:.76rem;font-weight:600;cursor:pointer;
-  transition:background .18s,color .18s,border-color .18s}
-.sting-replay:hover{background:rgba(255,0,255,.16);border-color:rgba(255,0,255,.5);color:#fff}
-.sting-replay svg{width:13px;height:13px}
-
 @media(prefers-reduced-motion:no-preference){
   /* hidden start states - only worth applying where the sting can actually run */
   .sting-aura{opacity:0;transform:translate(-50%,-50%) scale(.5)}
@@ -722,7 +722,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 }
 @media(max-width:620px){
   .sting{aspect-ratio:16/9}
-  .sting-replay{top:12px;right:12px;bottom:auto}
   .mgrid,.pgrid,.mentgrid{grid-template-columns:1fr}
   /* the wall keeps both its columns here and gives up the space between them
      instead: at this width every pixel taken by the gap is a pixel off a
@@ -775,7 +774,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 /* ===== WHAT THE TICKET BUYS =====
    Said once under the two prices rather than twice inside them: the plans
    differ only in how many people walk through the door, so a copy of the same
-   eleven lines in each card would be the list twice and the difference nowhere.
+   ten lines in each card would be the list twice and the difference nowhere.
    One column, read top to bottom from the first materi to the last bonus, so it
    is one list rather than two halves; the column is as wide as its longest line
    and sits in the middle of a card as wide as the two tickets above it. */
@@ -1124,7 +1123,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
     </ul>
     <div class="painend reveal">
       <p>Kalo lo ngerasain hal di atas, lo berada di tempat yang tepat.</p>
-      <span class="painsiap">Crypto Teknikal siap bantu lo!</span>
+      <span class="painsiap"><span>Crypto Teknikal Academy</span> <span>Siap Bantu Lo!</span></span>
     </div>
   </div>
 </section>
@@ -1134,7 +1133,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   <div class="wrap">
     <div class="center reveal">
       <span class="eyebrow">Masih belum yakin?</span>
-      <h2>Coba dengerin apa kata member <span class="hl">Crypto Teknikal Academy</span></h2>
+      <h2>Nih... temen lo yang udah <span class="hl">cuan 2&nbsp;digit</span></h2>
+      <p class="lead">Karena mereka action duluan. Gak banyak nunda belajar dan langsung action!</p>
     </div>
     <div class="proofwall reveal">
       <div class="prooftrack">
@@ -1167,6 +1167,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 <section class="band soft seam">
   <div class="wrap">
     <div class="center stagehead reveal">
+      <span class="eyebrow">Pertanyaan besarnya</span>
       <h2>Kenapa Crypto Teknikal bisa bantu lo <span class="hl">cuan 2&nbsp;digit</span></h2>
     </div>
     <div class="stingwrap reveal">
@@ -1182,10 +1183,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           </span>
         </span>
         <span class="sting-vig" aria-hidden="true"></span>
-        <button class="sting-replay" type="button">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/></svg>
-          Replay
-        </button>
       </div>
     </div>
     <ul class="zigstack flip reveal">
@@ -1648,7 +1645,6 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 4</b> - Rahasia Indikator Trading untuk Prediksi Lebih Akurat</span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 5</b> - Strategi Manajemen Risiko yang Efektif</span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 6</b> - Studi Kasus Langsung dan Latihan Praktik</span></li>
-        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Cara trading $500 jadi $1500 hanya dalam 1 bulan</span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Market Alphas - senilai Rp2.000.000</span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Grup Komunitas Crypto - senilai Rp1.000.000</span></li>
         <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - E-Book 30 Hari Jago Trading Crypto - senilai Rp499.000</span></li>
@@ -1826,8 +1822,8 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   sweep();
 
 
-  // Intro sting. Scrolling it into view plays it; a click anywhere on the stage,
-  // the Replay button included, restarts it.
+  // Intro sting. Scrolling it into view plays it; a click anywhere on the stage
+  // restarts it.
   var sting = document.getElementById('sting');
   if(sting){
     var quiet = window.matchMedia('(prefers-reduced-motion: reduce)');

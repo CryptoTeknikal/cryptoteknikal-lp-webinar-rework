@@ -56,11 +56,13 @@ Same server as the membership repo - see that README for the details.
    one before the proof wall.
 4. ***Lo lagi ngerasa gini gak sih?*** - five problems, one to a row, each
    beside a drawn 3D object that changes sides from row to row; then *Kalo lo
-   ngerasain hal di atas...* and a *Crypto Teknikal siap bantu lo!* pill. The
+   ngerasain hal di atas...* and a *Crypto Teknikal Academy Siap Bantu Lo!* pill. The
    pill is a label, not a button, so the ask under the film stays the only one.
-5. Proof - a moving wall of member screenshots, two columns against each other
-6. ***Kenapa Crypto Teknikal bisa bantu lo cuan 2 digit*** - the logo sting,
-   then four reasons in the same zigzag rows as the problem list
+5. Proof - *Nih... temen lo yang udah cuan 2 digit*, then a moving wall of
+   member screenshots, two columns against each other
+6. ***Kenapa Crypto Teknikal bisa bantu lo cuan 2 digit*** under a *Pertanyaan
+   besarnya* eyebrow - the logo sting, then four reasons in the same zigzag
+   rows as the problem list
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
 9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
@@ -69,7 +71,7 @@ Same server as the membership repo - see that README for the details.
 10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
 11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
     the date, time and kuota in words under it, then two tickets, then the
-    eleven-line benefit list once, in a single column from Materi 1 to the
+    ten-line benefit list once, in a single column from Materi 1 to the
     last bonus
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
@@ -122,7 +124,8 @@ reader always sees the price before the cart.
 
 Colours, type, the brand lockup, decks, the proof wall, the testimonial video,
 the mentor portraits and the intro sting are all unchanged from the membership
-page, and its README documents each of them:
+page - bar the sting's Replay button, which this page drops (a click on the
+stage still replays it, with its sound) - and its README documents each of them:
 <https://github.com/CryptoTeknikal/cryptoteknikal-lp-rework#customising>
 
 What is new here, and only here:
@@ -132,7 +135,7 @@ What is new here, and only here:
 | The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
 | Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
 | The problem list's closing pill | `.painsiap` |
-| The eleven-line benefit list | `.benefitbox` |
+| The ten-line benefit list | `.benefitbox` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
