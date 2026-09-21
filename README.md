@@ -33,7 +33,8 @@ dependencies, no external CSS, JS, fonts or images. Fonts and every screenshot
 are inlined as base64, so it makes no network request of its own. The two assets
 beside it are the member films, `testimoni-member.mp4` and
 `testimoni-mahasiswa.mp4`, which nothing fetches until someone presses play.
-(`dev.mjs` is a local preview server, not part of the page.)
+(`dev.mjs` is a local preview server and `tools/` redraws the poster's date;
+neither is part of the page.)
 
 ## Preview locally
 
@@ -66,8 +67,10 @@ Same server as the membership repo - see that README for the details.
    film (Billy, a student), under a *Sudah kebayang?* eyebrow, and a CTA
    under it
 10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
-11. **Pricing** - two tickets, then the eleven-line benefit list once, in a
-    single column from Materi 1 to the last bonus
+11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
+    the date, time and kuota in words under it, then two tickets, then the
+    eleven-line benefit list once, in a single column from Materi 1 to the
+    last bonus
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
@@ -79,22 +82,24 @@ because the webinar page does not have those sections; the markup and the CSS
 for them are still in the membership repo if any are wanted back. The Scalev
 page's date row and its *Lo pasti pernah ngerasa* list are gone the other way
 round: they were built here and then dropped, so `git show be0e70e` is where
-their markup and CSS live now.
+their markup and CSS live now. The date came back later, but as the poster
+above the prices rather than as that row.
 
 ## The offer
 
 | | |
 |---|---|
-| Date | Selasa, 23 Desember 2025, 19.30 - 22.30 WIB |
+| Date | Rabu, 07 Oktober 2026, 19.30 - 22.30 WIB |
 | Where | Live via Zoom |
 | Seats | 100 |
 | Solo | Rp79.000 |
 | Berdua | Rp99.000 (Rp49.500 each) |
 | Stated value | Rp9.298.000 |
 
-The first three are the webinar's own logistics, not copy: the page states
-neither the date, the platform nor the kuota any more (see [Notes](#notes)), so
-they live here and in the checkout's own page.
+The first three are the webinar's own logistics, and the page states them
+once, above the prices: in the poster and in the lines under it. See
+[The poster and the date](#the-poster-and-the-date) for everywhere the date
+lives.
 
 The value adds up from the six materi (Rp5.000.000) and the four bonuses
 (Rp2.000.000 + Rp1.000.000 + Rp499.000 + Rp799.000). Change any one of those
@@ -129,6 +134,7 @@ What is new here, and only here:
 | The problem list's closing pill | `.painsiap` |
 | The eleven-line benefit list | `.benefitbox` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
+| The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
 
 The six materi reuse the membership page's module stills - `#mfig1` to `#mfig5`
@@ -145,11 +151,26 @@ first is 10MB. Its poster is the video's cover art as a 46KB inlined `webp`.
 Both boxes share `.vidbox` and one script, and starting either film pauses the
 other.
 
+### The poster and the date
+
+The poster above the prices is the Scalev page's own
+(`tools/poster-source.webp`, 640x640 - there is no larger cut), with only the
+date on its Zoom line redrawn. It is drawn in Poppins Bold at the size and
+tracking that reproduce the original date's pixels, and the logo and the time
+either side of it move in by half the width the new date gives up, so the line
+stays centred. The poster is shown no wider than 460px, which is as far as a
+640px image stays sharp.
+
+**The date goes stale, and it lives in three places.** When the webinar moves:
+
+1. `python3 tools/poster-date.py "Rabu, 07 Oktober 2026"` - redraws the poster
+   from the untouched source and inlines it into `index.html` (needs Pillow;
+   Poppins Bold is fetched once into `tools/.cache/`).
+2. The `.webinfo` lines under the poster, and the poster's `alt`.
+3. The `<meta name="description">`.
+
 ## Notes
 
-- **The date is the one thing that goes stale.** The page itself no longer
-  states it - the only copy left is in the `<meta name="description">`, which
-  has to move when the webinar does.
 - The fourth problem row is finished here: Scalev's image of it stops at
   "...bantuin lo mulai dengan cara yang", so the page ends it on "bener".
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile. It stays
