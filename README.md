@@ -13,11 +13,13 @@ because this page is built out of that one.
   order, what each section argues, and what the reader is asked to do at the end
   of it. See [Section order](#section-order).
 - **Copy** is split. Where the two pages say the same thing - the hero promise,
-  the reader's problem, why the academy, the mentors, the bonuses, the Buffett
-  line - the membership page's newer wording is used, because that is the copy
-  that was rewritten. Where the webinar page says something only a webinar page
-  can - the six materi, the four bonus values, the Rp9.298.000 total, the two
-  ticket prices - its own words are kept.
+  why the academy, the mentors, the bonuses, the Buffett line - the membership
+  page's newer wording is used, because that is the copy that was rewritten.
+  Where the webinar page says something only a webinar page can - the six
+  materi, the four bonus values, the Rp9.298.000 total, the two ticket prices -
+  its own words are kept. The reader's problem is the webinar page's too: the
+  five rows under the film are the Scalev page's *Lo lagi ngerasa gini gak
+  sih?*, word for word.
 - **Visual language** is the membership page's, unchanged: near-black surfaces,
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
@@ -48,17 +50,21 @@ Same server as the membership repo - see that README for the details.
 3. **Testimoni member** - a member's video and a CTA under it. Nothing stands
    between the hero and the film, so the page makes its promise once and asks
    once before the proof wall starts.
-4. Proof - a moving wall of member screenshots, two columns against each other
-5. *Kenapa Pilih Crypto Teknikal Academy* - the logo sting and 4 value cards
-6. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
-7. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
-8. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
+4. ***Lo lagi ngerasa gini gak sih?*** - five problems, one to a row, each
+   beside a drawn 3D object that changes sides from row to row; then *Kalo lo
+   ngerasain hal di atas...* and a *Crypto Teknikal siap bantu lo!* pill. The
+   pill is a label, not a button, so the ask under the film stays the only one.
+5. Proof - a moving wall of member screenshots, two columns against each other
+6. *Kenapa Pilih Crypto Teknikal Academy* - the logo sting and 4 value cards
+7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
+8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
+9. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
    sideways
-9. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
-10. **Pricing** - the eleven-line benefit list once, then two tickets
-11. Warren Buffett quote - a ruled band, the portrait standing on the bottom
+10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
+11. **Pricing** - the eleven-line benefit list once, then two tickets
+12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
-12. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
+13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 Bold is where this page departs from the membership one. What the membership
 page carries and this one does not - the brand marquee, before/after, *cocok
@@ -112,6 +118,9 @@ What is new here, and only here:
 
 | what | where |
 |------|-------|
+| The five problem rows | `.painstack`, `.pain` |
+| Their five objects, drawn as SVG | `#pa-ask`, `#pa-cube`, `#pa-loss`, `#pa-folder`, `#pa-pct` |
+| The list's closing pill | `.painsiap` |
 | The eleven-line benefit list | `.benefitbox` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
@@ -125,6 +134,8 @@ seventh materi means bringing its `<symbol>` back from the membership repo.
 - **The date is the one thing that goes stale.** The page itself no longer
   states it - the only copy left is in the `<meta name="description">`, which
   has to move when the webinar does.
+- The fourth problem row is finished here: Scalev's image of it stops at
+  "...bantuin lo mulai dengan cara yang", so the page ends it on "bener".
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile that parks
   itself whenever one of the page's own buttons is on screen.
 - `prefers-reduced-motion` disables every animation; the proof wall stops being

@@ -305,6 +305,39 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
 .vidbox.playing::after{opacity:0}
 .vidbox.playing .vidplay{display:none}
 
+/* ===== LO LAGI NGERASA GINI =====
+   The Scalev page's list after the film: five problems, each a row of its own
+   with a 3D object beside it, the object changing sides from one row to the next
+   so the column reads down in a zigzag rather than as a stack of identical
+   bars. The objects are drawn here in the page's own glass-and-magenta rather
+   than shipped as Scalev's blue renders; the red and the gold stay, because on
+   those two they are the meaning - a loss, and money. The rows are one grid
+   each, and an odd row just swaps its two tracks, so the copy's column is the
+   same width whichever side the object stands on. The object comes first in
+   the markup so that on a phone, where a column beside it would be three words
+   wide, it can float and let the copy run on under it instead. */
+.painstack{list-style:none;max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.pain{--art:96px;display:grid;grid-template-columns:var(--art) minmax(0,1fr);align-items:center;gap:clamp(18px,3vw,30px);
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:22px clamp(20px,3vw,28px);box-shadow:var(--shadow-sm)}
+.pain:nth-child(odd){grid-template-columns:minmax(0,1fr) var(--art)}
+.pain:nth-child(odd) .painart{order:1}
+.painart{display:block;width:var(--art);height:var(--art);overflow:visible;
+  filter:drop-shadow(0 10px 22px rgba(255,0,255,.22))}
+.pain p{font-size:.98rem;line-height:1.62;color:var(--ink2)}
+.pain p b{color:var(--ink);font-weight:600}
+/* the list's verdict: one line in the reader's own terms, then the promise in a
+   pill - the flag the Berdua ticket wears, grown. A label and not a button, so it
+   has no arrow and takes no tap: the page has just asked, under the film, and
+   the next thing it owes the reader is the proof wall rather than a second ask. */
+.painend{text-align:center;margin-top:clamp(30px,3.6vw,44px)}
+.painend p{color:var(--ink2);font-size:clamp(1rem,1.4vw,1.1rem);text-wrap:balance}
+/* one line at any width: on the narrowest phones the type gives way before the
+   pill wraps, since "LO!" alone on a second line is the one way it can break. */
+.painsiap{display:inline-block;margin-top:16px;font-size:min(.86rem,3.4vw);font-weight:800;white-space:nowrap;
+  letter-spacing:.13em;text-transform:uppercase;color:#fff;background:var(--grad);border-radius:99px;
+  padding:12px 22px;box-shadow:0 12px 30px rgba(255,0,255,.34)}
+
 /* ===== BEFORE / AFTER ===== */
 .bagrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 .bacard{border-radius:22px;padding:32px;border:1px solid var(--line);background:var(--card);box-shadow:var(--shadow-sm)}
@@ -726,6 +759,12 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   .proofwall figure{margin-bottom:10px}
   .herobtns .btn{flex:1;justify-content:center}
   .faq .a p{padding-left:18px}
+  /* the object floats in the row's top corner, on the side it stood on, and the
+     copy wraps it: three lines beside it, the rest at the card's full width */
+  .pain{--art:64px;display:flow-root;padding:18px}
+  .pain .painart{float:left;margin:3px 14px 4px 0}
+  .pain:nth-child(odd) .painart{float:right;margin:3px 0 4px 14px}
+  .pain p{font-size:.95rem}
 }
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;transition:none!important}
@@ -883,6 +922,161 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       <a class="btn primary" href="#harga">Daftar Webinar Sekarang
         <svg aria-hidden="true"><use href="#arrowmark"/></svg>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LO LAGI NGERASA GINI: THE OBJECTS =====
+     One per problem, drawn as one set: a single light from the top left, a face,
+     a darker thickness under it, a hairline of light along the edges that face
+     the lamp, and the same four fills throughout. Decorative - every row says
+     what it means in words - so each instance is aria-hidden. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <linearGradient id="pabody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff6bff"/><stop offset=".5" stop-color="#d21fe6"/><stop offset="1" stop-color="#7a24d6"/>
+    </linearGradient>
+    <linearGradient id="patop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffc6ff"/><stop offset="1" stop-color="#ff5cff"/>
+    </linearGradient>
+    <linearGradient id="padeep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#8a1fd0"/><stop offset="1" stop-color="#3d0f7a"/>
+    </linearGradient>
+    <linearGradient id="paglass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e59bff" stop-opacity=".55"/><stop offset="1" stop-color="#7a24d6" stop-opacity=".3"/>
+    </linearGradient>
+    <linearGradient id="pagold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe6a8"/><stop offset="1" stop-color="#f7b955"/>
+    </linearGradient>
+    <linearGradient id="pagoldside" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e09a3a"/><stop offset=".5" stop-color="#b8741f"/><stop offset="1" stop-color="#8a5314"/>
+    </linearGradient>
+    <linearGradient id="pared" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff9a8c"/><stop offset=".55" stop-color="#ff5f52"/><stop offset="1" stop-color="#d42f2a"/>
+    </linearGradient>
+    <linearGradient id="pareddeep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b3261f"/><stop offset="1" stop-color="#6e1210"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Bingung: a speech bubble asking, a pane of glass behind it asking too -->
+  <symbol id="pa-ask" viewBox="0 0 120 120">
+    <rect x="44" y="10" width="64" height="56" rx="16" fill="url(#paglass)" stroke="#fff" stroke-opacity=".3" stroke-width="1.2"/>
+    <path transform="translate(3 4)" fill="url(#padeep)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
+    <path fill="url(#pabody)" d="M32 30H72A16 16 0 0 1 88 46V76A16 16 0 0 1 72 92H48L31 107L33 92H32A16 16 0 0 1 16 76V46A16 16 0 0 1 32 30Z"/>
+    <path d="M22 72V47A11 11 0 0 1 33 36H66" fill="none" stroke="#fff" stroke-opacity=".55" stroke-width="3" stroke-linecap="round"/>
+    <path d="M42.5 53A9.5 9.5 0 1 1 57.5 60.5C54 63 52 64.5 52 69" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="52" cy="79" r="4" fill="#fff"/>
+  </symbol>
+
+  <!-- Takut rugi: a box with a question on every side you can see -->
+  <symbol id="pa-cube" viewBox="0 0 120 120">
+    <path d="M60 60L98 40V82L60 102Z" fill="url(#padeep)" stroke="url(#padeep)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M22 40L60 60V102L22 82Z" fill="url(#pabody)" stroke="url(#pabody)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M60 20L98 40L60 60L22 40Z" fill="url(#patop)" stroke="url(#patop)" stroke-width="6" stroke-linejoin="round"/>
+    <path d="M22 40L60 60L98 40" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.6" stroke-linejoin="round"/>
+    <g fill="none" stroke="#fff" stroke-width="5.2" stroke-linecap="round" stroke-linejoin="round">
+      <path transform="matrix(.95 .5 0 1 22 40)" d="M13.5 15A6.8 6.8 0 1 1 24.5 20.5C21.8 22.2 20 23.3 20 27"/>
+      <path transform="matrix(.95 -.5 0 1 60 60)" d="M13.5 15A6.8 6.8 0 1 1 24.5 20.5C21.8 22.2 20 23.3 20 27" stroke-opacity=".85"/>
+    </g>
+    <circle transform="matrix(.95 .5 0 1 22 40)" cx="20" cy="33.5" r="2.9" fill="#fff"/>
+    <circle transform="matrix(.95 -.5 0 1 60 60)" cx="20" cy="33.5" r="2.9" fill="#fff" fill-opacity=".85"/>
+  </symbol>
+
+  <!-- Sinyal sana-sini, tetep loss: the money, and the line taking it down -->
+  <symbol id="pa-loss" viewBox="0 0 120 120">
+    <path fill="url(#pabody)" d="M36 54C22 63 12 78 12 90C12 102 22 108 41 108C60 108 70 102 70 90C70 78 60 63 46 54Z"/>
+    <path fill="url(#pabody)" d="M36 54L31 43C35 45 38 41 41 41C44 41 47 45 51 43L46 54Z"/>
+    <rect x="32" y="51" width="18" height="6" rx="3" fill="url(#pagold)"/>
+    <path d="M21 88C21 77 27 69 33 63" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="3" stroke-linecap="round"/>
+    <g fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M47 79.5C46 77 44 76 41 76C37.5 76 35 78 35 81C35 84 38 85.5 41 86C44 86.5 47 88 47 91C47 94 44.5 96 41 96C37.5 96 35.5 94.5 35 92"/>
+      <path d="M41 71.5V100.5"/>
+    </g>
+    <g id="pacoin">
+      <path d="M66 94v8a17 6 0 0 0 34 0v-8Z" fill="url(#pagoldside)"/>
+      <ellipse cx="83" cy="94" rx="17" ry="6" fill="url(#pagold)"/>
+    </g>
+    <use href="#pacoin" y="-8"/>
+    <use href="#pacoin" y="-16"/>
+    <use href="#pacoin" y="-24"/>
+    <ellipse cx="83" cy="70" rx="12" ry="3.6" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="1.4"/>
+    <g transform="translate(3 4)" fill="url(#pareddeep)" stroke="url(#pareddeep)">
+      <path d="M12 16L38 36L52 24L82 50" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M93 59L75 58L89 42Z" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+    <g fill="url(#pared)" stroke="url(#pared)">
+      <path d="M12 16L38 36L52 24L82 50" fill="none" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M93 59L75 58L89 42Z" stroke-width="3" stroke-linejoin="round"/>
+    </g>
+  </symbol>
+
+  <!-- Bukan buat gue: the chart filed away, still pointing up -->
+  <symbol id="pa-folder" viewBox="0 0 120 120">
+    <path fill="url(#padeep)" d="M16 36A7 7 0 0 1 23 29H43A6 6 0 0 1 47.6 31.2L53 37H97A7 7 0 0 1 104 44V94A7 7 0 0 1 97 101H23A7 7 0 0 1 16 94Z"/>
+    <g transform="rotate(-7 60 50)">
+      <rect x="30" y="16" width="60" height="62" rx="6" fill="#f7eefe"/>
+      <path d="M40 28H66M40 37H58" stroke="#ff5cff" stroke-width="4.5" stroke-linecap="round"/>
+      <path d="M40 46H74" stroke="#d9c8ea" stroke-width="3" stroke-linecap="round"/>
+    </g>
+    <path transform="translate(0 3)" fill="#4a1288" d="M18 50H102A6 6 0 0 1 107.9 57L101.5 97A8 8 0 0 1 93.6 104H26.4A8 8 0 0 1 18.5 97L12.1 57A6 6 0 0 1 18 50Z"/>
+    <path fill="url(#pabody)" fill-opacity=".95" d="M18 50H102A6 6 0 0 1 107.9 57L101.5 97A8 8 0 0 1 93.6 104H26.4A8 8 0 0 1 18.5 97L12.1 57A6 6 0 0 1 18 50Z"/>
+    <path d="M18.5 55.5H100" fill="none" stroke="#fff" stroke-opacity=".5" stroke-width="2.4" stroke-linecap="round"/>
+    <path d="M32 90L46 78L58 86L80 66" fill="none" stroke="url(#pagold)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M88 58.6L86 72.7L74 59.3Z" fill="url(#pagold)" stroke="url(#pagold)" stroke-width="2.5" stroke-linejoin="round"/>
+  </symbol>
+
+  <!-- Stuck: the number that never moves -->
+  <symbol id="pa-pct" viewBox="0 0 120 120">
+    <g transform="translate(4 5)" fill="none" stroke="url(#pareddeep)" stroke-linecap="round">
+      <circle cx="38" cy="38" r="13" stroke-width="11"/>
+      <circle cx="82" cy="82" r="13" stroke-width="11"/>
+      <path d="M86 20L34 100" stroke-width="12"/>
+    </g>
+    <g fill="none" stroke="url(#pared)" stroke-linecap="round">
+      <circle cx="38" cy="38" r="13" stroke-width="11"/>
+      <circle cx="82" cy="82" r="13" stroke-width="11"/>
+      <path d="M86 20L34 100" stroke-width="12"/>
+    </g>
+    <g fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2.4" stroke-linecap="round">
+      <path d="M27.5 33A12 12 0 0 1 35 26.5"/>
+      <path d="M71.5 77A12 12 0 0 1 79 70.5"/>
+      <path d="M80.5 21.5L73 33"/>
+    </g>
+  </symbol>
+</svg>
+
+<!-- ===== LO LAGI NGERASA GINI ===== -->
+<section class="band">
+  <div class="wrap">
+    <div class="center reveal">
+      <h2>Lo lagi <span class="hl">ngerasa&nbsp;gini</span> gak sih?</h2>
+    </div>
+    <ul class="painstack reveal">
+      <li class="pain">
+        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-ask"/></svg>
+        <p><b>Bingung banget mulai dari mana.</b> YouTube banyak, channel Telegram juga seabrek, tapi malah bikin tambah pusing. Yang satu bilang A, yang satu bilang B, kepala gue kayak mau meledak.</p>
+      </li>
+      <li class="pain">
+        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-cube"/></svg>
+        <p><b>Takut rugi.</b> Udah banyak denger cerita temen yang modal ilang, atau ikut call terus nyangkut. Jadi makin takut entry.</p>
+      </li>
+      <li class="pain">
+        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-loss"/></svg>
+        <p><b>Udah coba ikut sinyal sana-sini&hellip; tetep loss.</b> Ngikutin doang tanpa ngerti kenapa bisa buy/sell di situ. Ujung-ujungnya bukan belajar, malah jadi gambling.</p>
+      </li>
+      <li class="pain">
+        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-folder"/></svg>
+        <p><b>Makin lama malah makin ngerasa &lsquo;kayaknya ini bukan buat gue deh&rsquo;.</b> Padahal, deep down lo tahu&hellip; lo cuma butuh orang yang bisa bantuin lo mulai dengan cara yang bener.</p>
+      </li>
+      <li class="pain">
+        <svg class="painart" viewBox="0 0 120 120" aria-hidden="true"><use href="#pa-pct"/></svg>
+        <p><b>Dan parahnya lagi, lo ngerasa stuck di lingkaran belajar yang itu-itu aja.</b> Hari ini belajar candlestick, besok lupa. Lusa coba ikut kelas, tapi gak ngerti juga. Ujungnya muter di tempat. Gak ada progress.</p>
+      </li>
+    </ul>
+    <div class="painend reveal">
+      <p>Kalo lo ngerasain hal di atas, lo berada di tempat yang tepat.</p>
+      <span class="painsiap">Crypto Teknikal siap bantu lo!</span>
     </div>
   </div>
 </section>
