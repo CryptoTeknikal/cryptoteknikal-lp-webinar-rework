@@ -63,9 +63,11 @@ Same server as the membership repo - see that README for the details.
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
 9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
-   film (Billy, a student), under a *Sudah kebayang?* eyebrow and no CTA
+   film (Billy, a student), under a *Sudah kebayang?* eyebrow, and a CTA
+   under it
 10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
-11. **Pricing** - the eleven-line benefit list once, then two tickets
+11. **Pricing** - two tickets, then the eleven-line benefit list once, in a
+    single column from Materi 1 to the last bonus
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
