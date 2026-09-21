@@ -285,25 +285,30 @@ function listen(port, attempt = 0) {
     console.error(err.message);
     process.exit(1);
   });
-  server.listen(port, () => {
-    const url = 'http://localhost:' + port;
-    console.log('\n  \u001b[35mcryptoteknikal\u001b[0m dev server');
-    console.log('  ' + url + '   ' + dim('(live reload on, ctrl-c to stop)') + '\n');
-    watch(ROOT, { recursive: true }, (_event, filename) => onChange(filename));
-    if (OPEN) {
-      const cmd =
-        process.platform === 'darwin'
-          ? 'open'
-          : process.platform === 'win32'
-            ? 'start'
-            : 'xdg-open';
-      spawn(cmd, [url], {
-        stdio: 'ignore',
-        detached: true,
-        shell: process.platform === 'win32',
-      }).unref();
-    }
-  });
+  server.listen(port);
 }
+
+// Registered once: a callback passed to server.listen() on every attempt would
+// pile up, so each port skipped over would repeat the banner, the watcher and
+// the browser open when the free port finally binds.
+server.once('listening', () => {
+  const url = 'http://localhost:' + server.address().port;
+  console.log('\n  \u001b[35mcryptoteknikal\u001b[0m dev server');
+  console.log('  ' + url + '   ' + dim('(live reload on, ctrl-c to stop)') + '\n');
+  watch(ROOT, { recursive: true }, (_event, filename) => onChange(filename));
+  if (OPEN) {
+    const cmd =
+      process.platform === 'darwin'
+        ? 'open'
+        : process.platform === 'win32'
+          ? 'start'
+          : 'xdg-open';
+    spawn(cmd, [url], {
+      stdio: 'ignore',
+      detached: true,
+      shell: process.platform === 'win32',
+    }).unref();
+  }
+});
 
 listen(Number.isFinite(START_PORT) ? START_PORT : 8899);
