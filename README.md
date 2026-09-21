@@ -30,9 +30,10 @@ because this page is built out of that one.
 
 The page is one self-contained file, `index.html`: no build step, no
 dependencies, no external CSS, JS, fonts or images. Fonts and every screenshot
-are inlined as base64, so it makes no network request of its own. The one asset
-beside it is `testimoni-member.mp4`, which nothing fetches until someone presses
-play. (`dev.mjs` is a local preview server, not part of the page.)
+are inlined as base64, so it makes no network request of its own. The two assets
+beside it are the member films, `testimoni-member.mp4` and
+`testimoni-mahasiswa.mp4`, which nothing fetches until someone presses play.
+(`dev.mjs` is a local preview server, not part of the page.)
 
 ## Preview locally
 
@@ -61,8 +62,8 @@ Same server as the membership repo - see that README for the details.
    then four reasons in the same zigzag rows as the problem list
 7. *Pendidik dan Analis Crypto Teknikal Academy* - the two mentors
 8. **6 materi** + what the set is worth (Rp5.000.000), and a CTA under it
-9. *Emang Bisa Cuan Dua Digit dari Trading Crypto?* - bullish / bearish /
-   sideways
+9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
+   film (Billy, a student), under a *Sudah kebayang?* eyebrow and no CTA
 10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
 11. **Pricing** - the eleven-line benefit list once, then two tickets
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
@@ -131,6 +132,16 @@ What is new here, and only here:
 The six materi reuse the membership page's module stills - `#mfig1` to `#mfig5`
 and `#mfig8` - and the four unused ones are dropped from the sprite. Adding a
 seventh materi means bringing its `<symbol>` back from the membership repo.
+
+### The second film
+
+`testimoni-mahasiswa.mp4` is the channel's 89-second *Mahasiswa Dengan
+Penghasilan 2 Digit Dari Trading Crypto* clip, encoded the way the membership
+README describes for the first: 1280x720 at 30fps, H.264 high profile `crf 24`,
+AAC 112k, `+faststart`. The busier background makes it about 18MB where the
+first is 10MB. Its poster is the video's cover art as a 46KB inlined `webp`.
+Both boxes share `.vidbox` and one script, and starting either film pauses the
+other.
 
 ## Notes
 
