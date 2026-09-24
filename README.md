@@ -118,19 +118,18 @@ said was free.
 
 ### Checkout links
 
-One Scalev checkout per ticket, because each sells a different thing:
+Both ticket buttons point at one Scalev checkout, the page the old LP used:
 
 ```
-Rp79.000   https://crypto-teknikal.myscalev.com/checkoutwebinarct
-Rp128.000  https://crypto-teknikal.myscalev.com/checkoutwebinarct-ebook
+https://crypto-teknikal.myscalev.com/checkoutwebinarct
 ```
 
-The first is the page the old LP used, now down to the one Rp79.000 product.
-The second is its duplicate, selling the Scalev bundle *Webinar Crypto Teknikal
-+ E-Book* (the webinar and the e-book, one price option at Rp128.000), so the
-buyer gets the Zoom access and the PDF from a single order. Both checkouts list
-what the seat buys, and only the second lists the e-book - the same split as the
-two benefit boxes here.
+It carries both offers as one *Pilih Paket* radio, each a Scalev bundle:
+*Webinar Crypto Teknikal* at Rp79.000, and *Webinar Crypto Teknikal + E-Book* at
+Rp128.000 - the webinar and the e-book in one order, so the buyer gets the Zoom
+access and the PDF together. The second carries the e-book's own line as its
+bundle description, the way the right-hand box here does; the list above the
+radio is what both have in common, which is why the e-book is not in it.
 
 Every other CTA on the page points at `#harga` rather than the checkout, so the
 reader always sees the price before the cart.
