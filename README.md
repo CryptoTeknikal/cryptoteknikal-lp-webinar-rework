@@ -25,7 +25,7 @@ because this page is built out of that one.
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
   the membership page does not - the zigzag rows and their 3D objects, the
-  benefit lists, the two-up pricing - is drawn in that same language rather
+  benefit lists, the stacked offers - is drawn in that same language rather
   than in Scalev's.
 
 The page is one self-contained file, `index.html`: no build step, no
@@ -70,9 +70,10 @@ Same server as the membership repo - see that README for the details.
    under it
 10. **3 bonuses**, each with the shots that prove it, + total value Rp8.799.000
 11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
-    the date, time and kuota in words under it, then two tickets - the webinar,
-    or the webinar and the e-book - then a benefit list under each of them, in
-    the same two columns, because the two no longer buy the same thing
+    the date, time and kuota in words under it, then the two offers stacked one
+    under the other, each as a price and then the list of what that price
+    includes: *Webinar*, *Isi paket Webinar*, *Webinar + E-Book*, *Isi paket
+    Webinar + E-Book*
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
@@ -141,8 +142,8 @@ What is new here, and only here:
 | The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
 | Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
 | The problem list's closing pill | `.painsiap` |
-| A benefit list under each ticket, and the e-book block that ends the second | `.benefitwrap`, `.benefitbox`, `.bbebook` |
-| Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
+| A benefit list under each ticket, and the e-book block that ends the second | `.benefitbox`, `.bbebook` |
+| The two offers stacked, price then list, twice | `.pricewrap`, `.pricewrap .benefitbox + .plan`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
 
