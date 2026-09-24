@@ -16,7 +16,7 @@ because this page is built out of that one.
   the mentors, the bonuses, the Buffett line - the membership page's newer
   wording is used, because that is the copy that was rewritten. Where the
   webinar page says something only a webinar page can - the six materi, the
-  four bonus values, the Rp9.298.000 total, the two ticket prices - its own
+  three bonus values, the Rp8.799.000 total, the two ticket prices - its own
   words are kept. The reader's problem and why the academy are the webinar
   page's too: the five rows under the film (*Lo lagi ngerasa gini gak sih?*)
   and the four after the proof wall (*Kenapa Crypto Teknikal bisa bantu lo
@@ -25,7 +25,7 @@ because this page is built out of that one.
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
   the membership page does not - the zigzag rows and their 3D objects, the
-  benefit list, the two-up pricing - is drawn in that same language rather
+  benefit lists, the two-up pricing - is drawn in that same language rather
   than in Scalev's.
 
 The page is one self-contained file, `index.html`: no build step, no
@@ -68,18 +68,18 @@ Same server as the membership repo - see that README for the details.
 9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
    film (Billy, a student), under a *Sudah kebayang?* eyebrow, and a CTA
    under it
-10. **4 bonuses**, each with the shots that prove it, + total value Rp9.298.000
+10. **3 bonuses**, each with the shots that prove it, + total value Rp8.799.000
 11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
-    the date, time and kuota in words under it, then two tickets, then the
-    ten-line benefit list once, in a single column from Materi 1 to the
-    last bonus
+    the date, time and kuota in words under it, then two tickets - the webinar,
+    or the webinar and the e-book - then a benefit list under each of them, in
+    the same two columns, because the two no longer buy the same thing
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
 
 Bold is where this page departs from the membership one. What the membership
 page carries and this one does not - the brand marquee, before/after, *cocok
-buat siapa*, the nine modules, three of the seven bonuses, the FAQ - is absent
+buat siapa*, the nine modules, four of the seven bonuses, the FAQ - is absent
 because the webinar page does not have those sections; the markup and the CSS
 for them are still in the membership repo if any are wanted back. The Scalev
 page's date row and its *Lo pasti pernah ngerasa* list are gone the other way
@@ -94,20 +94,26 @@ above the prices rather than as that row.
 | Date | Rabu, 07 Oktober 2026, 19.30 - 22.30 WIB |
 | Where | Live via Zoom |
 | Seats | 100 |
-| Solo | Rp79.000 |
-| Berdua | Rp99.000 (Rp49.500 each) |
-| Stated value | Rp9.298.000 |
+| Webinar | Rp79.000 |
+| Webinar + e-book | Rp128.000 |
+| Stated value | Rp8.799.000 |
 
 The first three are the webinar's own logistics, and the page states them
 once, above the prices: in the poster and in the lines under it. See
 [The poster and the date](#the-poster-and-the-date) for everywhere the date
 lives.
 
-The value adds up from the six materi (Rp5.000.000) and the four bonuses
-(Rp2.000.000 + Rp1.000.000 + Rp499.000 + Rp799.000). Change any one of those
-numbers and the total in the `.totalbox`, the heading above the prices and the
-benefit list all have to move with it - they are four copies of the same
-arithmetic.
+The value adds up from the six materi (Rp5.000.000) and the three bonuses
+(Rp2.000.000 + Rp1.000.000 + Rp799.000). Change any one of those numbers and
+the total in the `.totalbox`, the `<meta name="description">` and both benefit
+lists have to move with it - they are copies of the same arithmetic.
+
+The e-book is not in that sum. It used to be the fourth bonus, given away with
+the seat; it is now what the second ticket sells, so it is out of the free
+stack, out of the total, and priced once - Rp499.000 struck through, Rp49.000
+paid - in the right-hand card and again in the box under it. Anything that put
+it back among the bonuses would be selling a reader something the page already
+said was free.
 
 ### Checkout links
 
@@ -135,7 +141,7 @@ What is new here, and only here:
 | The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
 | Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
 | The problem list's closing pill | `.painsiap` |
-| The ten-line benefit list | `.benefitbox` |
+| A benefit list under each ticket, and the e-book block that ends the second | `.benefitwrap`, `.benefitbox`, `.bbebook` |
 | Two tickets side by side | `.pricewrap.two`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
