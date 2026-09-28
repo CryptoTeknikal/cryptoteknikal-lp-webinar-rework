@@ -128,11 +128,13 @@ https://crypto-teknikal.myscalev.com/checkoutwebinarct
 ```
 
 It carries both offers as one *Pilih Paket* radio, each a Scalev bundle:
-*Webinar Crypto Teknikal* at Rp79.000, and *Webinar Crypto Teknikal + E-Book* at
-Rp128.000 - the webinar and the e-book in one order, so the buyer gets the Zoom
-access and the PDF together. The second carries the e-book's own line as its
-bundle description, the way the right-hand box here does; the list above the
-radio is what both have in common, which is why the e-book is not in it.
+*Webinar Crypto Teknikal* at Rp79.000, and *Webinar Crypto Teknikal + 2 E-Book +
+CustomGPT* at Rp128.000 - the webinar and both e-book products in one order, so
+the buyer gets the Zoom access and the two PDFs together. The second carries
+the extras' own line as its bundle description, the way the right-hand box here
+does; the list above the radio is what both have in common, which is why
+neither the e-books nor the CustomGPT are in it. The checkout's poster is the
+same redrawn one as this page's.
 
 Every other CTA on the page points at `#harga` rather than the checkout, so the
 reader always sees the price before the cart.
