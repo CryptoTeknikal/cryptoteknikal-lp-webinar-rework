@@ -92,7 +92,7 @@ above the prices rather than as that row.
 
 | | |
 |---|---|
-| Date | Rabu, 07 Oktober 2026, 19.30 - 22.30 WIB |
+| Date | Rabu, 28 Oktober 2026, 19.30 - 22.30 WIB |
 | Where | Live via Zoom |
 | Seats | 100 |
 | Webinar | Rp79.000 |
@@ -183,7 +183,7 @@ stays centred. The poster is shown no wider than 460px, which is as far as a
 
 **The date goes stale, and it lives in three places.** When the webinar moves:
 
-1. `python3 tools/poster-date.py "Rabu, 07 Oktober 2026"` - redraws the poster
+1. `python3 tools/poster-date.py "Rabu, 28 Oktober 2026"` - redraws the poster
    from the untouched source and inlines it into `index.html` (needs Pillow;
    Poppins Bold is fetched once into `tools/.cache/`).
 2. The `.webinfo` lines under the poster, and the poster's `alt`.
