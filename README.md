@@ -16,11 +16,11 @@ because this page is built out of that one.
   the mentors, the bonuses, the Buffett line - the membership page's newer
   wording is used, because that is the copy that was rewritten. Where the
   webinar page says something only a webinar page can - the six materi, the
-  three bonus values, the Rp8.799.000 total, the two ticket prices - its own
-  words are kept. The reader's problem and why the academy are the webinar
-  page's too: the five rows under the film (*Lo lagi ngerasa gini gak sih?*)
-  and the four after the proof wall (*Kenapa Crypto Teknikal bisa bantu lo
-  cuan 2 digit*) are the Scalev page's, word for word.
+  bonus values, the two ticket prices - its own words are kept.
+  The reader's problem and why the academy are the webinar page's too: the
+  five rows under the film (*Lo lagi ngerasa gini gak sih?*) and the four
+  after the proof wall (*Kenapa Crypto Teknikal bisa bantu lo cuan 2 digit*)
+  are the Scalev page's, word for word.
 - **Visual language** is the membership page's, unchanged: near-black surfaces,
   a pure magenta (`#ff00ff`) accent, rounded cards, pill badges, neon glow
   instead of drop shadows, reveal-on-scroll. Anything the webinar page has and
@@ -68,12 +68,12 @@ Same server as the membership repo - see that README for the details.
 9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
    film (Billy, a student), under a *Sudah kebayang?* eyebrow, and a CTA
    under it
-10. **3 bonuses**, each with the shots that prove it, + total value Rp8.799.000
+10. **2 bonuses**, each with the shots that prove it, + total value Rp8.000.000
 11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
     the date, time and kuota in words under it, then the two offers stacked one
     under the other, each as a price and then the list of what that price
-    includes: *Webinar*, *Isi paket Webinar*, *Webinar + E-Book*, *Isi paket
-    Webinar + E-Book*
+    includes: *Webinar*, *Isi paket Webinar*, *Webinar + 2 E-Book + CustomGPT*,
+    *Isi paket Webinar + 2 E-Book + CustomGPT*
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
@@ -96,25 +96,28 @@ above the prices rather than as that row.
 | Where | Live via Zoom |
 | Seats | 100 |
 | Webinar | Rp79.000 |
-| Webinar + e-book | Rp128.000 |
-| Stated value | Rp8.799.000 |
+| Webinar + 2 e-book + CustomGPT | Rp128.000 |
+| Stated value | Rp8.000.000 |
 
 The first three are the webinar's own logistics, and the page states them
 once, above the prices: in the poster and in the lines under it. See
 [The poster and the date](#the-poster-and-the-date) for everywhere the date
 lives.
 
-The value adds up from the six materi (Rp5.000.000) and the three bonuses
-(Rp2.000.000 + Rp1.000.000 + Rp799.000). Change any one of those numbers and
-the total in the `.totalbox`, the `<meta name="description">` and both benefit
-lists have to move with it - they are copies of the same arithmetic.
+The value adds up from the six materi (Rp5.000.000) and the two bonuses
+(Rp2.000.000 + Rp1.000.000), which is what the Rp79.000 seat gets. Change any
+one of those numbers and the total in the `.totalbox`, the
+`<meta name="description">` and both benefit lists have to move with it - they
+are copies of the same arithmetic.
 
-The e-book is not in that sum. It used to be the fourth bonus, given away with
-the seat; it is now what the second ticket sells, so it is out of the free
-stack, out of the total, and priced once - Rp499.000 struck through, Rp49.000
-paid - in the right-hand card and again in the box under it. Anything that put
-it back among the bonuses would be selling a reader something the page already
-said was free.
+Everything else is the second ticket's only, so none of it is in the bonus
+stack or the total: the two e-books, *30 Hari Jago Trading Crypto* and *Maximum
+Trading Psychology* (Rp499.000 each), and the *CustomGPT AI Profit Booster*
+(Rp799.000). The page never shows above the prices, as free, what it sells
+below them. The three are priced once in the second ticket - Rp1.797.000 struck
+through, Rp49.000 paid - and the box under it splits that the way the offer is
+built: the first e-book is what the Rp49.000 buys, the second e-book and the
+CustomGPT come free with it.
 
 ### Checkout links
 
@@ -149,7 +152,7 @@ What is new here, and only here:
 | The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
 | Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
 | The problem list's closing pill | `.painsiap` |
-| A benefit list under each ticket, and the e-book block that ends the second | `.benefitbox`, `.bbebook` |
+| A benefit list under each ticket, and the three blocks that end the second (two e-books, the CustomGPT) | `.benefitbox`, `.bbextra` |
 | The two offers stacked, price then list, twice | `.pricewrap`, `.pricewrap .benefitbox + .plan`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
