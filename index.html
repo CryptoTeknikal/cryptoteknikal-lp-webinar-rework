@@ -161,6 +161,8 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    them would otherwise be the single word left over - and here that word is
    half of "Per Bulan", the part the promise turns on. */
 .hero h1{font-size:clamp(1.75rem,3.9vw,2.6rem);margin:0 0 18px;text-wrap:balance}
+/* a highlight kept on one line, where the screen is wide enough for it */
+@media(min-width:360px){.hero h1 .nb{white-space:nowrap}}
 .hero .lead{color:var(--ink2);font-size:clamp(1rem,1.35vw,1.15rem);max-width:560px}
 
 /* Shots that share one slot: a deck. One is shown at a time in a box of a
@@ -855,7 +857,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   <div class="wrap herogrid">
     <div class="herocopy">
       <span class="eyebrow hot">Perhatian: buat lo yang capek rugi mulu</span>
-      <h1>Kuasai <span class="hl">Rahasia Trading Crypto</span> Dari 0 Hingga <span class="hl">Konsisten&nbsp;Profit&nbsp;Dua&nbsp;Digit</span> Per Bulan Di Kondisi Market&nbsp;Apapun</h1>
+      <h1>Kuasai <span class="hl">Rahasia Trading Crypto</span> Dari 0 Hingga <span class="hl nb">Konsisten Profit Dua&nbsp;Digit</span> Per Bulan Di Kondisi Market&nbsp;Apapun</h1>
       <p class="lead">Telah membantu 1000+ member cuan konsisten tiap bulannya.</p>
     </div>
 
