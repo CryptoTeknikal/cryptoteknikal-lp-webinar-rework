@@ -138,8 +138,9 @@ does; the list above the radio is what both have in common, which is why
 neither the e-books nor the CustomGPT are in it. The checkout's poster is the
 same redrawn one as this page's.
 
-Every other CTA on the page points at `#harga` rather than the checkout, so the
-reader always sees the price before the cart.
+So does the sticky bar at the foot of the screen on mobile, straight to the
+cart. Every other CTA on the page points at `#harga` rather than the checkout,
+so the reader who taps one sees the price before the cart.
 
 ## Customising
 
