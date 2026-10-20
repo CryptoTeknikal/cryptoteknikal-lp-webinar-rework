@@ -432,7 +432,13 @@ nav.scrolled{border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,
    margin, which leaves it sitting the same distance from the last bonus above as
    from the price below; a margin under one band padding and over two never did. */
 #bonus{padding-bottom:0}
+/* What the seat buys, listed once above the total it adds up to, so the total
+   reads as the sum of the list right over it: the two sit as close as each
+   price sits to its own box. */
+.paketbox{width:fit-content;max-width:560px;margin:clamp(40px,5vw,56px) auto 0}
+.paketbox + .totalbox{margin-top:22px}
 .totalbox{margin-top:clamp(46px,6vw,74px);background:var(--panel);border:1px solid rgba(255,0,255,.3);border-radius:24px;padding:clamp(28px,4vw,40px);text-align:center;color:var(--ink);position:relative;overflow:hidden;box-shadow:0 26px 60px rgba(0,0,0,.55),0 0 70px rgba(255,0,255,.1)}
+.totalbox{z-index:1}  /* over the wash the pricing band's seam spreads up into this one */
 .totalbox:before{content:"";position:absolute;width:340px;height:340px;right:-110px;top:-150px;border-radius:50%;background:radial-gradient(circle,rgba(255,0,255,.22),transparent 68%)}
 .totalbox:after{content:"";position:absolute;width:280px;height:280px;left:-130px;bottom:-160px;border-radius:50%;background:radial-gradient(circle,rgba(168,0,255,.18),transparent 68%)}
 .totalbox .tl{position:relative;font-size:.78rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:var(--brand2)}
@@ -773,37 +779,33 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
 .webinfo span{display:block}
 
 /* ===== WHAT EACH TICKET BUYS =====
-   A box under each price rather than one under both, because the two tickets no
-   longer buy the same thing, and directly under it: price, then what that price
-   includes, then the next price. Each box carries its whole list instead of
-   pointing at the other one, so a reader never has to scroll back to know what
-   they are looking at; what the second box has and the first does not is the
-   three blocks at its foot - two e-books and the CustomGPT - which is all the
-   extra Rp49.000 buys. */
+   What both tickets buy is listed once, above the total (.paketbox); the box
+   under the second price holds only what it adds - two e-books and the
+   CustomGPT - which is all the extra Rp49.000 buys. */
 .benefitbox{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,3vw,30px);box-shadow:var(--shadow-sm)}
 .benefitbox.pro{border:1.5px solid var(--brand);background:linear-gradient(165deg,rgba(255,0,255,.09),var(--card) 55%);box-shadow:var(--shadow),0 0 56px rgba(255,0,255,.12)}
 .benefitbox .bbhead{font-size:.74rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--brand2);text-align:center;margin-bottom:22px}
 .benefitbox ul{list-style:none;display:grid;gap:14px;margin:0}
+.benefitbox li .nw{white-space:nowrap}
 .benefitbox li{display:flex;gap:12px;align-items:flex-start;font-size:.93rem;line-height:1.55;color:var(--ink2)}
 
 /* What the second ticket adds, shown rather than only named: each e-book's own
    cover, and the CustomGPT's opening screen cut to the same shape, at thumbnail
-   size beside the two lines that say what it is and what it costs. They sit
-   under one rule instead of taking ticks in the list above, so they read as the
-   things this box adds and not as more items both boxes share. */
+   size beside the two lines that say what it is and what it costs. */
 .bbextra{display:flex;gap:14px;align-items:flex-start;margin-top:18px;padding-top:18px;border-top:1px solid var(--line2)}
 .bbextra img{flex:none;width:64px;height:auto;border-radius:7px;border:1px solid var(--line2);box-shadow:var(--shadow-sm)}
 .bbextra b{display:block;font-size:.93rem;font-weight:600;line-height:1.4;color:var(--brand2)}
 .bbextra p{margin:6px 0 0;font-size:.86rem;line-height:1.5;color:var(--mut)}
 .bbextra s{color:var(--soft-mut)}
 .bbextra + .bbextra{margin-top:16px;padding-top:0;border-top:0}
+.bbhead + .bbextra{margin-top:0;padding-top:0;border-top:0}
 
-/* Two offers, one under the other, each as a price and then its list. The gap
-   inside a pair is the grid's; between one pair and the next it opens up, so
-   the four boxes read as two offers rather than as four cards - and that same
-   opening is what gives the second card's flag its clearance, since the flag
-   rides up over the card's top edge. */
-.pricewrap .benefitbox + .plan{margin-top:30px}
+/* Two offers, one under the other, the second with its box under it. The gap
+   between the first offer and the second opens up past the grid's, so the
+   second price and its box read as one offer - and that same opening is what
+   gives the second card's flag its clearance, since the flag rides up over the
+   card's top edge. */
+.pricewrap .plan + .plan{margin-top:30px}
 .plan .pflag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);white-space:nowrap;
   font-size:.66rem;font-weight:800;letter-spacing:.13em;text-transform:uppercase;color:#fff;
   background:var(--grad);border-radius:99px;padding:6px 15px;box-shadow:0 8px 22px rgba(255,0,255,.4)}
@@ -1580,6 +1582,20 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
       </article>
     </div>
 
+    <div class="benefitbox paketbox reveal">
+      <div class="bbhead">Isi paket Webinar</div>
+      <ul>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 1</b> - Dasar Analisa Teknikal Yang Wajib Dikuasai</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 2</b> - Menguasai Support dan Resistance Beserta Trennya</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 3</b> - Membaca Pola Grafik dengan Akurasi Tinggi</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 4</b> - Rahasia Indikator Trading untuk Prediksi Lebih Akurat</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 5</b> - Strategi Manajemen Risiko yang Efektif</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 6</b> - Studi Kasus Langsung dan Latihan Praktik</span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Market Alphas <span class="nw">- senilai Rp2.000.000</span></span></li>
+        <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Grup Komunitas Crypto <span class="nw">- senilai Rp1.000.000</span></span></li>
+      </ul>
+    </div>
+
     <div class="totalbox reveal">
       <div class="tl">Total value yang lo dapatkan</div>
       <div class="tv"><span class="stabilo">Rp8.000.000</span></div>
@@ -1615,46 +1631,23 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
         <div class="pday">Spesial 5 orang tercepat hari ini</div>
         <a class="btn ghost" href="https://crypto-teknikal.myscalev.com/checkoutwebinarct">Daftar Webinar Sekarang</a>
       </div>
-      <div class="benefitbox">
-        <div class="bbhead">Isi paket Webinar</div>
-        <ul>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 1</b> - Dasar Analisa Teknikal Yang Wajib Dikuasai</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 2</b> - Menguasai Support dan Resistance Beserta Trennya</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 3</b> - Membaca Pola Grafik dengan Akurasi Tinggi</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 4</b> - Rahasia Indikator Trading untuk Prediksi Lebih Akurat</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 5</b> - Strategi Manajemen Risiko yang Efektif</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 6</b> - Studi Kasus Langsung dan Latihan Praktik</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Market Alphas - senilai Rp2.000.000</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Grup Komunitas Crypto - senilai Rp1.000.000</span></li>
-        </ul>
-      </div>
       <div class="plan pro">
         <span class="pflag">Paling lengkap</span>
-        <div class="pname">Webinar + 2 E-Book + CustomGPT</div>
-        <div class="psub">Akses Zoom yang sama + 2 e-book + CustomGPT</div>
+        <div class="pname">Webinar + 2 E-Book +&nbsp;CustomGPT</div>
+        <div class="psub">Akses Zoom yang sama + 2 e-book +&nbsp;CustomGPT</div>
         <div class="pprice">Rp128.000</div>
-        <div class="pday">2 E-book + CustomGPT senilai <s>Rp1.797.000</s>, cukup nambah Rp49.000 aja</div>
+        <div class="pday">2 E-book + CustomGPT senilai&nbsp;<s>Rp1.797.000</s>, cukup nambah Rp49.000&nbsp;aja</div>
         <a class="btn primary" href="https://crypto-teknikal.myscalev.com/checkoutwebinarct">Daftar + 2 E-Book Sekarang</a>
       </div>
       <div class="benefitbox pro">
-        <div class="bbhead">Isi paket Webinar + 2 E-Book + CustomGPT</div>
-        <ul>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 1</b> - Dasar Analisa Teknikal Yang Wajib Dikuasai</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 2</b> - Menguasai Support dan Resistance Beserta Trennya</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 3</b> - Membaca Pola Grafik dengan Akurasi Tinggi</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 4</b> - Rahasia Indikator Trading untuk Prediksi Lebih Akurat</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 5</b> - Strategi Manajemen Risiko yang Efektif</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Materi 6</b> - Studi Kasus Langsung dan Latihan Praktik</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Market Alphas - senilai Rp2.000.000</span></li>
-          <li><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></span><span><b>Bonus</b> - Grup Komunitas Crypto - senilai Rp1.000.000</span></li>
-        </ul>
+        <div class="bbhead">Isi paket Webinar + 2 E-Book +&nbsp;CustomGPT</div>
         <div class="bbextra">
           <img src="data:image/webp;base64,UklGRrwjAABXRUJQVlA4ILAjAADQewCdASrAAA8BPmEqkkakIqGhKFP72IAMCWIHAZ2mrmgzoYyKe7/LP2s7w/rvxp7OfE2Pr3if0vui+en/N/3vs4/rn+n9gb9bvOt9Y/mI/Zv9pPd9/6H60+6//FeoB/Sv9V63X/U9jn+6/7/2EP2b9Nz91fhI/uH/R/bj4Ev2i/9vsAf+r1AM7v/SeH/4/9I/iPyx5zvVH/B9B/5r+Jfzv9v/bv80/mHwt+Tv+N6gX5D/S/8//X+F/2f/cfsX7Bftn9c/4f928Zr+b9EPsf/tPcD/mf9Z/2/9187zxAvxX/B/Uv4A/5x/Zf+n/ivyq+mP+r/9X+g/MD3MfoP+d/8v+n+Ar+d/2X/udlj0ef3HPQg4yL0qQJObILX6iwr7Z42QKEE134/GFEv/8XoZBqPeF1Jz0v8cGKJC//1FldYXlQ5CgoCwl3d2P8IUj3UiuLuKHzdG9N44gM2pck4NTQuKQGF5p3hfHDQrdO/7MypjTxZOZempLA76PSjl2Ekr1S+kdAWyYBV1Udm4WtFUMVniguE6fdIZFqwAnPTBbMPDDWovbhhwCrchHk65vHIQvo4ZqZyPo375pL9caRPhdejAVHLqke//lgIfGKiS5LU1s5URiCgUcjLJ5RgcYXUO5bmqHXjjBJ+AFgd/4sNjn4fO0DxZBd/PJhEUHZjIcIeDCGxNz5m/GPkVX/yrVN2YU7F1Den4UOAQlPrQ18RbNxn2jKbMsHdegzBdMp3oCEFhISODXz0IRhf8dezXpEFcNNpD3mNeuiOqvJPa7t1FwRQTJbOmbOfJZ9zc/7Y4Oy8rI0mKTcgG0upprQNWGg+nlYdOqSfpUmun7DhSiH4Ln0vMUhQACAO19vNQcuy7DVhZizBRUnCPj5qW1CmXi45xCrm065xhAYvyJ+ApOl284msnidjB9/xWXrmVRwx19fFDTA0ICpwdzE47MVCl0W/q8o3WXDRD8CkydZU28uf7+nEmcSjZ6TVNRPtPg7rN2UdlA3CF2AYzcMlKvrFxgWT2Hk5oYHsL0EsgsxcV5nQ5kL/mszpcL03kGX25IcQ7FRqCDz6bKdCrq0S19JlDO9Z34Ct2FiSlPfynj5v7dtpLyyVTfWH2ApKiu5/jFeV3sr2m3kHt8mEli3aYuRSvEjpW7Z9XZJ4fSRswuj/xcZ0EvntyqQXOs8+epmebkpqHYkAMO75YvyB8TbLbydNDBRJwPMkx4u5TKhEOIS39SYCZ+rd0rHhU1h8J50ARv3W4Qsp4pgAq0EaSUPwZ6mBTehjusgO+IgZ6LrwLEYlKNgRzUWVzp2hpTFIIQuNWDypko9poA5xAxvsUQAAA/vmFmm5UzjjIxOZGn/yQNecYR4f+eUelPDyVnzqWJfRtpiX2TJUd+FetERyX8zI2DHdmgbyW8fT5tEZhhS7/Ji1gpd/kxLLTNvfTwBnyDIODsNorYLsfjsiwYUVDnsjg/ynWIQqbahd9mcQWz9R9ynUXrUGY+fw9mYwHXmM7NV7PVLn8T3jzX9JO7m3XdCQ/GxhMEHnn0+O4/2vi0+YJfAbFW78oIgwvvEImoisJ8p4F4C1FjVN89D4y2KlAKTe1osN24YuiS38EMnWF8d9ZhECJHPyweY4V9uSKLAmzHTO4kXr8R3VVtYRzOz2SjyqETPjRz5WVTW/la9qOW3Al0zLDqtZpPNI9FBEo8vT/+Ay5g0tM1vfZOWQQfgROYub2t4K8oKYouidvE/oqIOjdEwXUHkk6eoWuc1iSSOIuzRmwO/xqesX+BZBLOYndJw9/sFuZJCMo8hjMJP3blUdZk6o0FRnCBI5Uwr/eZLyj4Z/MKcR7mJDMsHABuH0dY/pKhljxxKBb6+SA915R07F6Rcu7x8LjqHt0yXwo8jdLGd4gAbFmqSIXAhnERvc5sEhcf18k/pDciLI3xyaOkBRLvyepP5QOFKLPnNmcMwJxvmbeSL5Vj8sfLad00t8g/nsTsgiy8oi5VwCWfUaMhAWuMMwB+2sz/65wrmSUnzFAz3RzzUm8LLYD6BabdBIy5N3cqm98HzivgWhLHmTeNIv4xXjfesu5AzDL1mzQv4caH+qN/1zE76vR5ofGLeOpWaDV4hsZjuBzzFqbmJDO5X/VAg//SAzhJnR/9NWTt8u9h+Yr/+n8zpgI8c5vtgv8SQiPqHvv8EnoKlEC1PlKy220EUJJdwBKwsRw+4MwFmDI4SypZa47iiyajQZ7Uc2Bk71JGTvDUzM9uKVZ+/KYV1MzeUITQoKlVAj4Zar9joS44y8mKhJ0iicwkwixh5UePOPIx8GKNt0OwK/YhTp+/h1uaZdUj11OgPSclh3RjdvPvoMi2QTprudioYSSq8DTYUSeGmfn4tJJ4zKxFBCk9xn8JSCZi2ledbi3BD/QmYldSnzhuVMN/wl2ke3bDd6BdRKd7/6wBnP/f0N6vEE4IqA5PVxl433HGtm2HJc9Q1Y1QbkJcw4mlKmv8m2Y1vLwo91iafiwwoW/RSq2/iBpQc0W7fPwTQJPWPLO0iAbaffZfQf9BQCKluHgX/8Dj07ycNk0C++FiZg3MU5bDgiggBewV5IEzdZmmYFe9MdZmnU+sFm/KX1K54AnpLJuI7OdUjlbgCFH/x6RelGrSw8PxMAoZG4MvsTvmmjdm3ojqwxBaF+PwgqFm5XQVI0EpDRv6/nPQqX3emWhyz39qLGD5sN0tqaCjLJXLOrukh7hXxtDTPjAWhpOzN077jghzR/tvg/T/RO49/9m5aSvVL5ERJGz32CtzirAE4NU3rNrpRFYtcjfgpcsSUI7K6hUkE3dDC9IhN3+Orn+XLGcTXzeoZDFkYdo8x2aTSOOvM481aSIvGI1tZNOO/V7EjAHvrNNniLpXLV0/mxWXf62/nPwPCYinyz9EBxsN2C6TUBhG6qHdmypoaFzEP042q149qj2o9o8IzD8Lr6VLbqIkTYXaBzuaf16Y5zlCMYwlACeL2fhwVyFPq8itd+UVkZ9zFFpiZjLApPCaUbFvrMrO/JuQTusAAzv4Io5VI6v0ORQx80X8YnX8AZiAbDE2q4KiWMC6Y1J9sBrD6fUwB42t/3FdGxGSLD/UECHaf0lL76vO62zQ8+lT59KXi+pdHVkjd4/bW+Iu5/Riv0Qit2WOATk4CkYbkfi2kF8d3+8K8iQkBjYmU/5zHZratxtD/5Ff71TwD/X+gMGtX9Y5IfkBXKVZwv4ngIwoovdwZZf8qw106Xs5fQzYNgA97Kjjt0fTP/8SOdHwe3qQUlUCQuWfvtSCoectEejcs3E8+tuikyJOI/F0hc8PpN/I4tyJlab2AhnS7sssdthSe27/1DELgAAqBBQBu4FXy9aXOdpDwfeIZ/BxGaOjcf7jjW5jlSlGDUvf4a+d0Pzg1bitcbI6rMmtv8/Z8dTiaC6dCifHGt5aVAbTW40Mw1ci73KYOL1mG1nWbn/bahcB+XuWu0Fjq3TrhHAOKAL1QuhQxTLjR2M8Ls176iXWAjrrTxAyxtdVqAEY+B/sTtz+mlE5BVSkzBCi7yt4wBqLBGKAb/KAs7tyel3vZNogsKQZNa2jeeXdajgTA52jp28TXcDwY2Yo7TGAYrGdivsoIEPQdKiZQ1JO9b9PgYxXnGnv195W7kycDc5Xym6jaCVhlW6LUzV8Z8AfByREYVVNB31L2/krc/+pTA6wPDnlSo8R1ZFLvqEz4qR7sWbiihksxz6m18Zc/2Fd5Qne9DEkNHZNTvOw8sjd6+0Z3GRRKn+My/6++KPp/rLdwtu4WVbXrcfsq15hT5LEQNkIDH/aA/rPglhi+3ltUOAqv83YkDAHujYon/0WmllVnTX2SbYBHQbCraFuAyfWtMGkk+r7+JZUv+fiT+CssHMVszgNvW5bTb9bPNxM2CsaRZfPGAT6/qKFBpx4//jiaGgsHOxxZPfd8PYhm809a3F0Oj+Gb7SQUg2vGOH9QAhfL7WDGQrhGkqzQ8VFq9RbiGianGRWLfPMATh40RumTPgL6ty69VDBdsO+lx25QmgAs9vnV00BByAR3f6TtsdNPRa/5m+nHpX/5qZD9xvt2yPBvwtv4cpAYLbLrEkzTn+jHMyL04MEPo1yqyU+/SbuYMwVwygAf+tkWkygP6wO3qcUgc3AOqvvQSeqzr8/5GQfkBbppTp8nNDJteIBzQc5tNAWprsh7V9Eb7u1v5uNzQ/z+IBLYqeMKeu1T7mxaP/huQ1IFOY0fjclHsnP3jJMkM8FenYgF8LXYCrkfznvAOz3GDIwZhBl6ZVJn6DyasrqPqZjEb/8xUh6vP2U0RnrtsjE7jtCOOWxYAvPRskKiKFWRTDxRkwa2Joim3+6dmmOpqbIVJNd9IIFh4DFHngC9Lwnfq2S0T2tn1L0x4FlzNYgqGQH8vdlyYP8oqoxa4bZxhaW0snCMYGsBuQi1NtELJw0nUqf0b58hAbAzfIiTCFRJyoiFw1so50prRyYfIsj9c1lFEqqXIXhSCrpd7y8wJNF0kjHSKpzy1SrMBUDKd3yb//EnPTsVdkKf3fajKO8HjhO+jj1uXXvMwzssi7K3H711jLPSTYf7zpm35+4vmVed7CpXTkMuX5qgIRnP3M0+Jxhq5FMWuKwsY1iXz11TFQ+fB4BCaMXTM8yyJCqZX8x20JtAYy2Jbd35BFY+9+LjkPOtP69r7QpkqfCmYKd9MkQMy5lqSUwAJpM012S9x9wsq3IcyJeDX82eP2uc4CXkQQm7yvPLLTUh6ZfRr/pQoepK9kRryfaGazODTNj/suRngT+8ZuQ+u226HrK+OewAc37sQs6OZBv6irZFr7uZ0hviw1k9Gr047ySkzgj0R8o/kVBSYa2gA/+mK2cKsgb8/e9SuR8xZz8gkc64WJStGaniSp1NH9C0ZhcIY0HAt029aPbnokyuoSVzZYnLIf1XvphxDah6jdg4U7aMhqvyZoypik+YvCjsA0ZX6myg8VCLPN9nqlkFVPd10kwfgqYKfPABuQjCmVviIqWUSTcGCBbqw0d+RCkrnD3I/jYjN6sXRshIdFsAwdzXY++adHwTOw3KoobQ7GxEvHWdF5ORoVRsbfSK0cMOBgkEQRnUAzqHZ/ddq5vXVo516PIWej46uprZRhOJP7K+IQN/XKxnbzz7p18+MsA6L039KHyRl3498zbfJx1Z5R2HQU5nC4SuxeUTAEs8eDoOK4E20OqBI4QBVvqgrT4iVIfZ5VX+mftCCWzoacB8lPaVXCGc50NZKCInHRIULUhDBI6gbW6bURrbrJR+oMdnYeCqO6K4bAh4rNhNXTbnk4dNBZbMuJDydBymnMCbPD1buKCr2p19ml0OXMiW6gnIYkL/4LOD+upII9qbNxsCIycTEtQEYNebODMYoE6QAmRa1ySVaV9AOBEFu19p7bFiDRyL7Nr7OSMVZxtwNTWx1uF6UUyczEVAqheN4gQbTR7EX9vONf3jZBD8WwRZcMz5jb+Y8IQWj9iaGrBvoHqUBGABfHID/mJEXVICU0TBSWZvQzwff7EH/t/i5ta893sR5/g4SvvXgvvmlXw8yxfYtOYhBdsumXcXgg16Fs3ig24wEun3OQFFjc/9vTk016J923At6bNLsJKOiKByaQZBdWBC4+CcrF3vQPve9MJETva3kI6CIzZ/ZbrbTEskbfTCkLtJelcm+IfkvsyStPK0mDwQhgiUNntyQuDBzQYAQ1uzWtR/aWdFRs3o5FtMPTUCxvRi06tIdnrKZcBmPa4+NYwGXvMwnE/sS5bj3HTMO2UxYqTF1BGkASSlr9apAQq2bZeNu4RbspxR+GSYwiwmEA0HbzwoeBJ0EtvBIjBinvYZCbRmrnw2wiir+5jnjVux85+l5jE8RTFFanpqqdriOm7fYX16XLRUFyBmNvoZKDmyG9fDIYLXTFpHi5rDbodB34Xtxzhx446LRqBpr9WguJ3RT3dff5OUNbW+AJBC5NwJq4ILxXCjXEeut+/5ahdNWsSMRg4OKY0hGFZMIt/YieIwTO5ujFqN48O9WkRqy7R4tsYRZljrd+n+WMoPs3dZ4k7Fob0C7aZypb5gC8zoKI1LMV9XEqO4nvt9lGq//geDqawEwP9vrO07vUMpE+zEnqjoDSqzlrFWLUPGHfUZcRTMCQ3favYz/LhfqzFzFXOmhLWU7qWtQI4T7icTVDsRNAahsj0c8JHibiiBHUwX9ouRsteujDLl8ORlc6kuSC2dNCkan42xzvbht+sZxnLRJcNwDM55OHIPaCzkWeoB6JuHg9rPbT2xVFqSSE8sVBlw6hfSZVPvv7BgWuIjo/Ogzz9QOq5JlJ03JRYlT8rL9V/6EgyfksTRIiSGOIZflWqzVSQO1ph46TaDQZ0PEVLhxw0L7OnEj5bVsMIbBNcnyUPXHIPsMLtJcXjlNwdt7jSqykDjRE+bwouV5ivjtJ33OszMP5v/jS1Aq4/X47G03apO+IWDFTfWE+G6HW0dJ+RETeX42+3yQQL4a6OUh3HG00vmt+MEVv2/bXdIssUKu91MpYQpNPwikdpbW3iFRzG6DcIlT9PByk+kEH2NLvp+MPe1DLTUzl9eETv/zsexp/oOey7FDj3aREGZb245TecNKrZOqu2Dv+595W/gAWy0rBP7gWq9hxU/IkL7X5m4VgAt/LjCbZGjOPy0kWuiyFOeQC1Ff1aDCenbr1SS2Rf6lT8ij4M58jBsUMA5HWGoiOUtt7nIcHgEyEPW9msSFnzMW/53dj3Wm+d1apOnzMMQcAmEmh68U4Njp6UEUKJcRCdwA1jq3abfre+zaRC7ixwnFHpmBilgySClX0bcE6OOSHjYi6CrzDw5o09F/J+Bfbd9KT0OKgnLsJ0lyWlZm63XIzdVu2OQPFqt9EPyPdwTNjlSNZNO9+9jdZa1Xw1H/pt2MeC3SMScErzLXG9LFGXMVLZFZDIXUrSD/xvSNGGVnc+iP4MwMRrioh+PdPUNKbdeTm8mt1WMtwvhDvwfe0Ff0t6FTAv3y06N2D12ECwRzeQnYqFs50zqMdJB2a7x5EUZUeZKrpCT4pcw4Met2DzwRs8AhUr6K4ReYEnbvmyPdd8y8Qt3fKxN01IMVKmEycAJSx6LpUFJIXWtRMz8ZsJ2hTu2Lnn9hh65BIq1oD5Z9ggRWfRjxJVWg67pp9+IN0cLvqL25jTQF8hlkXBgIP+Bdgq7bJrmrBj5EtdxZ5KKy/sZFJzV5Zsu2WxYXwwY2s3r+wTzNJA6tyC7tQsMR4KN2DdsktNMAim3ddYVpi5s8PfEAjn8Z9SF/3yVP5JvgGunj22w10bnRYsw0Dck8aBZfHzng1PBk40v2/Mf4PZ7RqTcxAmJECr8Sag7lIaTe3yrjdxtZZFhtCWWfMxdI6lNklQoKT8mRXC+8T1/yrQrnO0no0L+oVF5cLKn4xdvJrfc0CGt35VTuHMZQWsgWcVcCAQ/ulYu6Yjd6OC4fK3KEiCVXFLdUp4jlLMKe9ninDzeXh77fHNGKUgGvTZ2YBh5N0Cj0gAe0zSobo9rc71SSjVPMoolEtsdQ870XIPvmb8ekAOZLdh7nYCkI70Go8tBfuDxLhge1ZBVmSHJGbEIpxOgQCJAUfgzs6/Huor+YhSbQ+cGvDf8SKfZ6TfheyGL0OAVilZT6uOCSIDWmCQDF7WGsu8fU2gztdafPpvQrmdHGv/XrPA93i1ulU8JVRlsdOorvAOL7/E0F/MrGEEZvPyHHWLZWynjR590cpdpxMzjDvDEo8GXLXLoPwvFWIyHEnvm1U+nCkr2FQa54S1mMWoOPg3TsNDiLHQZBwohQ9RZSwIfqObkxj4rcLjZINkxkptTlh7SysiJYwDuYroVF5n9Pzi7JR8q5V3bq/yaUgp9scD8Wlzrr+qHOc4DIzXVknqEFzGuU1WwpD1FHnmRueLnr+HhOEUP0067p/+tlzL3j906dKnqfTSiZTgmRTKOvdYx9uPW9OyYfIi8+mhiqBZ9LbGHK393Y4XKRzDDQX90LnHJMpK5dKkoUcuD7sq1te4v7BlxU4I+MqIQvM9OL4woA7Uj/CHY2KRT4/I5XMhd6OGwLP3X2iHHu5zdJ1BDFC61krhZTNLHWlEAF74uAFs6WiWJ6Q/4MunEijF6ptDXkr3s+bLUE4V8nkR1+uethjbvL9xzOGLmU0Jn8TTX8O9C84rsJVcqMsoWhfApkzWjjH9azJ975Qzgo6g7O1KNT9HvsFK7cRSxKiG4d5OkJMvOh6c8+0PUhW5BWZYN4/6aO2d9Wmlz6JMeUBInsE4REM8HfC711bGcKqlhaF1XSmI9tNOrRNKmNVJU1C/Mz79Jyn2Tk5TP6hr0KpSuIAPwaAE1ou+nF4ZhgfMgdsYqWHXrXwmKG0Cp9M7qc9/AMytcvyB3lhWQwkkkWfMQhQQjlJe6NMx0m1vj7I30msiUsc03EYVaC3k1yeKKJpyyRJoT0T7DWwmxe45yoxMDYjSmzVpKb30VX/GDyjfqhgMqclXiegBbX3mTj7JKow8MdWnjWeiEv5xprw2wvjBuP30N5zuZLWF/NUswxWG9TkGAjGo6/ckF1dlYwbGxyVR6qS7s2vXOCb/909pQNfVYIIdSBmWmXHXhW+GW6WsCE44WwLZMu3UNsQUyPmUXOsPUYn5k6WSzSedm+ugx/blQVskLq3eRu7YFc+1eNejW+tGflTVKWRMnrHoCHsed5SNC+kcSxLJ1USXXm+L3oOthw3/aRV5L3FHk//h2sU//ylFG7dRVQK4ICO5XBDRg/nit9kySE1QG0Y1dzuNYyxDA5DZCxUNvAoPmNihAd635lxjQyU+fgkppdc08RIqTACOZ7u5+BcxysB+eRraDyGb/5IDH3futJurBL9THPzOynwyWtdl4a8FxiCZuNeIJdqrvM+Ua7mj9tqDKzJ5D4wrUwh/IfWWmd5eihGB6e+Kn4soKxvrcmJyls0hqt2D3z074ndt0XLyrBtOQvwzs0lT6xKY/ta+NdQeEQtaQ1+ufDZ/xk2TyYREEyhxn+doHlFynmzKVGRoAzE+oLOZBrIMt9HmUVg+KEkAf8e/j3cyhRCU0uU/gDMdntHUEk+p6Zmra+4KOGwtHvsggR8uUI+qVF0Gr/V1kbc5crbAHN3PvTXMd8sfSjNvsgUKRap8sS5DPOeg1nJQYz8wLCnbFgSAieEkQ4b2Y8VqxTCA4u4pwlPrkvtKsyGk3q3+eBUmiz6qSQ50CEqy+hjs8zJKNNFonyo9eJCrfFrzNyRmswcAB7Hmk8U1yd3/UNa5DOkg1DW2q3YNEm/5yBLvm0yREPSOztdlJhnsTF2r+XPTMz3O0vRk6BkDOxeOQwpDO2TYpjf79+SiGJ2RNrvphtYZaWRbLJFvd/oc7YlVQx8rzWd+irJdk4n70pnfymJBZvUxOj7m/nKNgyJsL+JGBStgZoUMy5C9SKnfL8lM0H+KFXO/cKAi8d4T5oe5RQAnh/yT5MdfbESV3iE0KaFQKpl5N1n4zS1G3M7bqOOaYgmyAzBgYFoK4yUUr8IpHcgYG4nIEX8DPivpHcD+owtpwzlXQ1RW5vNAaJ1MDoxB49RgUxfvLhXDJt+MwGfoyQcHrOtYo8NbF0AKEUztRxPDSBPSqIMTBWNDq/BxN7egn5QZqmgFh5pZkujqghybhcGoI9VQTeWeDCm2Rie+Zn8nDXiTQxClUiEvd6Heb05Mesq3DYIqQ3bNKjtaLcbdShKqw/E5QLBs4p/RImyiX6EX3qVJUrSi7PAQ+3swX3JvHKVJcklaFDbnhZPrFhQCmSSlVCcOJN1hBzaoHVtgT9tUfRCVernDxmVY3JWOor+w+eUlhDk8YmarKJflV5Us+AlUgeHdAc6gaw6hAfdyutgCXZzYUG4J4XBby2cWYoplsg+q+UL4BHKWQDABCZST9b80QvDui6D20ePV59XOC1rQr26Xd8dPM+/iU6XV6QE7JreSyTKh/6DemJZM4EexvwVxo7V5d2vtLlrmABV8zz2K4uiaAUeRS3MjFntH8mJOaIeJY2Q28Yg/7D4rBf/eEqnDMqC0ghGgDPhltktEFMhLoQLlFjr13WoQyRoOH+ChcvNc5HVSg8pF5dWAWRaribOgslEOcaGM8Pv93RR8k6LlDtTbczvKT8ULGvzyeEooWZEwcCEjnoa1bCIMERRSlC4FatzJEuFf67UUg5AZrg80l4e/4821dS8C03XbRvvsB2q3jiTrPRvqQpARK1uXKy1CtMbziKORQxLEE/1c9ljoeTzrJFcwiDYPwGjfF5JhgPv76LANVWcHmyRKN1TKtHVKwE1ViIrXBvm1vJQNpjsIdJmuUA+HWEjIB8I8b9xPyg0MmK5n1Pi1+M6CoAy/g1IAZK9UL2KktwyZUJmg81S+q4Igsnvx3FvOnhdE6uQrFSE2ZVUeSDctt07/6maw3NClMzlADq+n421Oz9IwftGf6DtipUheSvmamaFDyBJ1dhkFUWr9uYUcDM5BHiMlq3OnrSEDI+exzznR/7EYm3XV61Q0rsKm0Cjd8hPeUL2SQb54BO9CHt/G3wJA4R6zJ45BQ7O4ZDPDW3vhI+kTZBkWi55ndd6Fv0el1e3216f/hV3eAQyXDM0Kp2u3fzGkcGQ6T0OERXg2Lj2vk6UQDIbYjL816u1qrSpc6n3/oszB8fnOvt1dw1F7y/sjyf49U7Nn6okZqaUSnn7PhUhEJUR5GwY7PnmuBUD6TQVWEwZI/dQOgcjJyRBcLkqllGAMzny0dc2Xw+FxXz73oiLXTCeDv5A0CS9bHFjWmDotipTfhaZmyN39sYGTfhfFWwZ/z2V1A/M3GgIxxBAOpd7XJAak03bMGz5N8PubWeRPGiCX6jysqUJyu0wOjWg8SZD/X4mgP2pDaMrvvd/KnDzV/vOv6E/gCqiu9yxpegOZawXVKJb5gv0W19d8m+51kL+rJD9Zzeg63aeyRJfaSj7RALC8Voxr8zLXi7HAQe42pD94AUXdDvSWdgPvTHN0gm47jWPb6rLfobzxCwge3pAq4uu5R8qnR4thaDe5ttvm0S7h2Q7dARaM1tU4fawMMYHm2/7NfXAglo62Zr/jjB7PoYCehOAuJK6Q8pND6YyYyoEOBzByRsIyHLpkrhRInyv/JMi3X4Cvpqh9aNMLzbanPs6y+FvuywLFIG3/WrijgG1l5AV8FavGwWQvhgHRC/jTL6h1YeSgzzGRzZzcfaLZfVqbZQNFUKyGDqqwh45GY9zQwqR5nqOG3sW5J5UrWHLkF4t2DOZpa5iLtrnwF0pDcbogVMtqo3SLGUiZol6jbmVUY2FsoVmp+OHQ0xKFIwgyG7c0nM3D+OJxziaYI8Lrn0gaa4urHtfxN041i8tiyuBdh/SBYvGA3YOvMGWKlNAJvaAbQm+C7klcCV4cKF5CCyUqsfV6c9Cmj7fB2HmH133ITKQzKYaFnNlahSjVu2UvMyEsI+HdZOQ3u2o1nxnhlVKk6I6F2cetkgF/JbpwJOBksev8B57RxwHdVC3zfdP1vxYaoGDC+Trgpg81TQ6PZqmU31MXLOK/vz2/QncQApWknxZngGlO4I/apodwILNl0qaU7GcpjX9y2i/oTelxnxCoBYSzVw5hKz8FZZ8i8edNefln4Zs2aXTb6A9QuPLIggKtMzgUhjep2adOvPgXphPhsINUlGOAHuiPtH8VyIK0GH/e4bAu8UqKAjKp4TBYs4v5DQ2nmeLFbrFidG28dTRczhEMUuRziK/bOqbNO448pyjVw3qNuFk15qVf/8c62ayB7tWB0JjeA8t6m38zTamw3RFZ1d3FvLzus/qBw0PBU5efdsSmnEyAewJHaZ0h0FStj+D0Pm6kNRQX9vKi8IME7rl9/keouJZqQlBXn0nhMpcvqkHkFqBPdyZnSJ6NE5y9+4ijVTREfvJrRVukhh+FNGkVB8dSdaYVHwiXSUxeZz9jClti+ywjTTDD4oPAew66QMRCECnm8OJtgobkwYVSNVLaR5aArVMhbqgAEnAYlklkbMqAEqHhbVbM063opqITssQCZmQKhc/J4KmkJEyG9w4h44lfZI6caFb56P892HH9zPSu/G02HcySfCzLIxf8Fo7XK7njVzDkuM4zHTzS5PekKsYJn5L1tDFVl/UplEiLFVYC9B31jrukg3tk+p2Zt40D+aaMN4ShggeywLTB2iilKIOoe7aytAl+bcyAtAMUeQ4DDcAAAAA"
                width="192" height="271" alt="Sampul e-book 30 Hari Jago Trading Crypto">
           <div>
             <b>Plus - E-Book 30 Hari Jago Trading Crypto</b>
             <p>Strategi dari nol yang runtut dan bisa langsung dipraktekin untuk capai
-               hasilnya dalam 30 hari. Senilai <s>Rp499.000</s>, cukup nambah Rp49.000 aja.</p>
+               hasilnya dalam 30 hari. Senilai&nbsp;<s>Rp499.000</s>, cukup nambah Rp49.000 aja.</p>
           </div>
         </div>
         <div class="bbextra">
@@ -1663,7 +1656,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           <div>
             <b>Bonus - E-Book Maximum Trading Psychology</b>
             <p>Cara ngontrol serakah, takut, dan FOMO biar lo tetap disiplin dan konsisten.
-               Senilai <s>Rp499.000</s>, gratis di paket ini.</p>
+               Senilai&nbsp;<s>Rp499.000</s>, gratis di paket ini.</p>
           </div>
         </div>
         <div class="bbextra">
@@ -1672,7 +1665,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
           <div>
             <b>Bonus - CustomGPT AI Profit Booster</b>
             <p>AI yang dirancang khusus buat lo yang baru mulai. Analisisnya simpel, santai,
-               gampang dicerna. Senilai <s>Rp799.000</s>, gratis di paket ini.</p>
+               gampang dicerna. Senilai&nbsp;<s>Rp799.000</s>, gratis di paket ini.</p>
           </div>
         </div>
       </div>

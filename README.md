@@ -68,12 +68,14 @@ Same server as the membership repo - see that README for the details.
 9. ***Cuan 2 Digit Dari Trading Crypto Itu Realistis!*** - a second member's
    film (Billy, a student), under a *Sudah kebayang?* eyebrow, and a CTA
    under it
-10. **2 bonuses**, each with the shots that prove it, + total value Rp8.000.000
+10. **2 bonuses**, each with the shots that prove it, then *Isi paket
+    Webinar* - the six materi and the two bonuses in one list - and the total
+    value Rp8.000.000 it adds up to, right under it
 11. **Pricing** - an *Investasi* eyebrow, the Scalev page's webinar poster with
     the date, time and kuota in words under it, then the two offers stacked one
-    under the other, each as a price and then the list of what that price
-    includes: *Webinar*, *Isi paket Webinar*, *Webinar + 2 E-Book + CustomGPT*,
-    *Isi paket Webinar + 2 E-Book + CustomGPT*
+    under the other: *Webinar*, then *Webinar + 2 E-Book + CustomGPT* with
+    *Isi paket Webinar + 2 E-Book + CustomGPT* under its button - only what that
+    ticket adds, since the list both share is above the total
 12. Warren Buffett quote - a ruled band, the portrait standing on the bottom
     rule, a last CTA under it
 13. Footer (brand lockup + blurb, Social Media, Contact, legal disclaimer)
@@ -107,7 +109,7 @@ lives.
 The value adds up from the six materi (Rp5.000.000) and the two bonuses
 (Rp2.000.000 + Rp1.000.000), which is what the Rp79.000 seat gets. Change any
 one of those numbers and the total in the `.totalbox`, the
-`<meta name="description">` and both benefit lists have to move with it - they
+`<meta name="description">` and the *Isi paket Webinar* list have to move with it - they
 are copies of the same arithmetic.
 
 Everything else is the second ticket's only, so none of it is in the bonus
@@ -154,8 +156,9 @@ What is new here, and only here:
 | The zigzag rows, both lists (`.flip` starts the object on the left) | `.zigstack`, `.zigrow`, `.zigart` |
 | Their nine objects, drawn as SVG | `#zo-ask` ... `#zo-pct` (problems), `#zo-coin` ... `#zo-chat` (reasons) |
 | The problem list's closing pill | `.painsiap` |
-| A benefit list under each ticket, and the three blocks that end the second (two e-books, the CustomGPT) | `.benefitbox`, `.bbextra` |
-| The two offers stacked, price then list, twice | `.pricewrap`, `.pricewrap .benefitbox + .plan`, `.plan .pflag` |
+| The list the seat buys, above the total | `.benefitbox.paketbox` |
+| The box under the second ticket: its three blocks (two e-books, the CustomGPT) | `.benefitbox.pro`, `.bbextra` |
+| The two offers stacked, the second's box under it | `.pricewrap`, `.pricewrap .plan + .plan`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
 
