@@ -1767,7 +1767,7 @@ footer{background:#050308;border-top:1px solid var(--line);color:var(--ink2);pad
   var nav = document.getElementById('nav');
   var stickycta = document.querySelector('.stickycta');
   var hero = document.querySelector('.hero');
-  var pageCtas = Array.prototype.slice.call(document.querySelectorAll('.btn.primary'))
+  var pageCtas = Array.prototype.slice.call(document.querySelectorAll('.btn.primary, .plan .btn'))
     .filter(function(b){ return !(stickycta && stickycta.contains(b)); });
   var onScroll = function(){
     nav.classList.toggle('scrolled', window.scrollY > 8);
