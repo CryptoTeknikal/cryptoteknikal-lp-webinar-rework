@@ -50,14 +50,18 @@ Same server as the membership repo - see that README for the details.
 
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero - the webinar's own headline, with the membership page's testimonial
-   deck beside it (six member screenshots, crossfading), and **no button**
-3. **Testimoni member** - a member's video and a CTA under it. The hero makes
-   its promise without asking, so this is the page's first ask, and the only
-   one before the proof wall.
+   deck beside it (six member screenshots, crossfading), and **an offer card
+   under its lead**: the full ticket, Rp128.000, struck against the
+   Rp8.000.000 the set is worth, a *cuma 43rb/jam* seal, the kuota and what it
+   adds, and the page's first ask, so a reader the headline sold can buy
+   without scrolling
+3. **Testimoni member** - a member's video and a CTA under it, the only ask
+   between the hero and the proof wall.
 4. ***Lo lagi ngerasa gini gak sih?*** - five problems, one to a row, each
    beside a drawn 3D object that changes sides from row to row; then *Kalo lo
    ngerasain hal di atas...* and a *Crypto Teknikal Academy Siap Bantu Lo!* pill. The
-   pill is a label, not a button, so the ask under the film stays the only one.
+   pill is a label, not a button, so the ask under the film stays the only one
+   there.
 5. Proof - *Nih... temen lo yang udah cuan 2 digit*, then a moving wall of
    member screenshots, two columns against each other
 6. ***Kenapa Crypto Teknikal bisa bantu lo cuan 2 digit*** under a *Pertanyaan
@@ -162,6 +166,7 @@ What is new here, and only here:
 | The two offers stacked, the second's box under it | `.pricewrap`, `.pricewrap .plan + .plan`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
+| The hero's offer card: struck value, price, seal, tags, button, date | `.heroffer`, `.hoseal`, `.hotags`, `.hodate` |
 
 The six materi reuse the membership page's module stills - `#mfig1` to `#mfig5`
 and `#mfig8` - and the four unused ones are dropped from the sprite. Adding a
@@ -187,22 +192,23 @@ either side of it move in by half the width the new date gives up, so the line
 stays centred. The poster is shown no wider than 460px, which is as far as a
 640px image stays sharp.
 
-**The date goes stale, and it lives in three places.** When the webinar moves:
+**The date goes stale, and it lives in four places.** When the webinar moves:
 
 1. `python3 tools/poster-date.py "Rabu, 28 Oktober 2026"` - redraws the poster
    from the untouched source and inlines it into `index.html` (needs Pillow;
    Poppins Bold is fetched once into `tools/.cache/`).
 2. The `.webinfo` lines under the poster, and the poster's `alt`.
 3. The `<meta name="description">`.
+4. The `.hodate` line in the hero's offer card.
 
 ## Notes
 
 - The fourth problem row is finished here: Scalev's image of it stops at
   "...bantuin lo mulai dengan cara yang", so the page ends it on "bener".
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile. It stays
-  parked until the hero has scrolled away, since the hero has no button and
-  the bar would put an ask back into it, and it parks again whenever one of the
-  page's own buttons is on screen.
+  parked until the hero has scrolled away, since the hero carries its own
+  button, and it parks again whenever one of the page's own buttons is on
+  screen.
 - `prefers-reduced-motion` disables every animation; the proof wall stops being
   a window and runs to its full height so all eight shots still show.
 - The footer disclaimer covers scope of service - the academy sells education,
