@@ -51,7 +51,7 @@ Same server as the membership repo - see that README for the details.
 1. Sticky nav (brand lockup only, no link menu)
 2. Hero - the webinar's own headline, with the membership page's testimonial
    deck beside it (six member screenshots, crossfading), and **an offer card
-   under its lead**: the full ticket, Rp128.000, struck against the
+   under its lead**: the seat, Rp79.000, against the struck
    Rp8.000.000 the set is worth, the kuota, and the page's first ask, so a
    reader the headline sold can buy without scrolling
 3. **Testimoni member** - a member's video and a CTA under it, the only ask
