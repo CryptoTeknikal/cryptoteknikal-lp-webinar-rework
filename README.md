@@ -52,9 +52,8 @@ Same server as the membership repo - see that README for the details.
 2. Hero - the webinar's own headline, with the membership page's testimonial
    deck beside it (six member screenshots, crossfading), and **an offer card
    under its lead**: the full ticket, Rp128.000, struck against the
-   Rp8.000.000 the set is worth, a *cuma 43rb/jam* seal, the kuota and what it
-   adds, and the page's first ask, so a reader the headline sold can buy
-   without scrolling
+   Rp8.000.000 the set is worth, the kuota and what it adds, and the page's
+   first ask, so a reader the headline sold can buy without scrolling
 3. **Testimoni member** - a member's video and a CTA under it, the only ask
    between the hero and the proof wall.
 4. ***Lo lagi ngerasa gini gak sih?*** - five problems, one to a row, each
@@ -166,7 +165,7 @@ What is new here, and only here:
 | The two offers stacked, the second's box under it | `.pricewrap`, `.pricewrap .plan + .plan`, `.plan .pflag` |
 | The webinar poster and the lines under it | `.webposter`, `.webinfo` |
 | The hero's red eyebrow | `.eyebrow.hot` on `.herocopy` |
-| The hero's offer card: struck value, price, seal, tags, button, date | `.heroffer`, `.hoseal`, `.hotags`, `.hodate` |
+| The hero's offer card: struck value, price, tags, button, date | `.heroffer`, `.hotags`, `.hodate` |
 
 The six materi reuse the membership page's module stills - `#mfig1` to `#mfig5`
 and `#mfig8` - and the four unused ones are dropped from the sprite. Adding a
