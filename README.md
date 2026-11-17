@@ -202,6 +202,12 @@ stays centred. The poster is shown no wider than 460px, which is as far as a
 
 ## Notes
 
+- The poster above the prices is a link to the checkout, since it draws a *Daftar
+  Sekarang Juga!* button of its own. The films' play button sits in their bottom right
+  corner, the one place neither poster draws a title.
+- One scarcity line throughout: *Khusus untuk 100 orang tercepat*, the kuota the poster
+  and the lines under it give.
+
 - The fourth problem row is finished here: Scalev's image of it stops at
   "...bantuin lo mulai dengan cara yang", so the page ends it on "bener".
 - Responsive down to 360px, with a sticky bottom CTA bar on mobile. It stays
